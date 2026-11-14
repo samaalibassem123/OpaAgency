@@ -78,28 +78,28 @@ export function WhyChooseUs() {
       }
 
       gsap.from(leftColRef.current, {
-        x: -30,
+        x: -20,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.5,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: leftColRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
+          start: "top 92%",
+          once: true,
         },
       });
 
       if (rightGridRef.current) {
         gsap.from(rightGridRef.current.children, {
-          y: 25,
+          y: 20,
           opacity: 0,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power3.out",
+          duration: 0.45,
+          stagger: 0.06,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: rightGridRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
+            start: "top 92%",
+            once: true,
           },
         });
       }

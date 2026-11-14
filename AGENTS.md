@@ -107,9 +107,18 @@ This document governs all architectural, design, engineering, animation, quality
 
 ---
 
-## 6. Component Naming & Authoring Rules
+## 6. Component Naming & Authoring Rules: Mandatory shadcn/ui Standard
 
-- **shadcn/ui Component-First Policy:** Always prioritize using standard `shadcn/ui` accessible primitives located in `src/components/ui/` (e.g., `Button`, `Dialog`, `Sheet`, `DropdownMenu`, `Card`, `Badge`, `Tabs`, `Separator`, `Input`, `Textarea`, etc.). Never write raw, unstyled interactive elements or roll custom modal/drawer/dropdown logic when an equivalent shadcn primitive exists. Use the official `shadcn` MCP or CLI (`npx shadcn@latest add <component>`) to inspect registry items and install primitives cleanly.
+- **Strict shadcn/ui-First Policy (Non-Negotiable):**
+  - **Always Use shadcn Primitives:** Every interactive element, container surface, and input control MUST be built on official `shadcn/ui` primitives located in `src/components/ui/` (`Button`, `Card`, `Badge`, `Tabs`, `Dialog`, `Input`, `Textarea`, `Separator`, etc.).
+  - **Zero Raw Unstyled Containers:** Never write raw, unstyled HTML interactive elements (`<button className="...">`, raw `<input>`, or ad-hoc custom card/tab `div` wrappers) when an equivalent shadcn primitive exists.
+  - **On-Demand Component Installation:** When a project requirement needs an additional primitive (e.g. `sheet`, `accordion`, `tooltip`, `dropdown-menu`), always add it cleanly using the shadcn CLI:
+    ```bash
+    npx shadcn@latest add <component-name> --yes
+    ```
+    or inspect registry blocks via the official `shadcn` MCP server.
+  - **Non-Blocking Performance Rule:** Never wrap shadcn primitives in blocking `opacity: 0` GSAP ScrollTrigger timelines or `toggleActions: "play none none reverse"` that cause blank content while scrolling. All shadcn cards and tabs must be immediately visible upon viewport entry with hardware-accelerated, non-blocking transitions.
+  - **Glassmorphic Styling Discipline:** Style shadcn primitives using OPA's tactile glassmorphism tokens (`bg-white/85 backdrop-blur-md border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.04)]`) via Tailwind utilities with `className={cn(..., className)}`.
 - **Component Files:** PascalCase (`Hero.tsx`, `PortfolioGrid.tsx`). One component per file.
 - **Utility / Config Files:** kebab-case or camelCase (`site-config.ts`, `animations.ts`).
 - **Props Typing:** Every component must declare an explicit TypeScript interface (e.g. `interface HeroProps { ... }`).

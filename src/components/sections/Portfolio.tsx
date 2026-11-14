@@ -36,14 +36,14 @@ export function Portfolio() {
       }
 
       gsap.from(headerRef.current, {
-        y: 35,
+        y: 20,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.5,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: headerRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
+          start: "top 92%",
+          once: true,
         },
       });
     },

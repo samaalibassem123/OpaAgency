@@ -72,14 +72,25 @@ export function Navbar() {
     if (item.href.startsWith("#")) {
       e.preventDefault();
       if (item.href === "#" || item.href === "#top" || item.href === "#hero") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (typeof window !== "undefined" && window.__lenis) {
+          window.__lenis.scrollTo(0, { duration: 0.7 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       } else {
         const targetElement = document.querySelector(item.href);
         if (targetElement) {
-          const headerOffset = 90;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          if (typeof window !== "undefined" && window.__lenis) {
+            window.__lenis.scrollTo(targetElement as HTMLElement, {
+              offset: -75,
+              duration: 0.8,
+            });
+          } else {
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+          }
         }
       }
     }

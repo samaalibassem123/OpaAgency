@@ -20,6 +20,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -287,7 +292,7 @@ export function Contact() {
                     >
                       Nom complet *
                     </label>
-                    <input
+                    <Input
                       type="text"
                       id="fullName"
                       name="fullName"
@@ -295,7 +300,7 @@ export function Contact() {
                       placeholder="M. ou Mme..."
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors shadow-sm"
+                      className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 h-11"
                     />
                   </div>
 
@@ -306,14 +311,14 @@ export function Contact() {
                     >
                       Société / Marque (optionnel)
                     </label>
-                    <input
+                    <Input
                       type="text"
                       id="company"
                       name="company"
                       placeholder="Nom de votre entreprise"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors shadow-sm"
+                      className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 h-11"
                     />
                   </div>
                 </div>
@@ -327,7 +332,7 @@ export function Contact() {
                     >
                       Numéro de téléphone *
                     </label>
-                    <input
+                    <Input
                       type="tel"
                       id="phone"
                       name="phone"
@@ -335,7 +340,7 @@ export function Contact() {
                       placeholder="+216 ..."
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors shadow-sm"
+                      className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 h-11"
                     />
                   </div>
 
@@ -346,7 +351,7 @@ export function Contact() {
                     >
                       Adresse email *
                     </label>
-                    <input
+                    <Input
                       type="email"
                       id="email"
                       name="email"
@@ -354,7 +359,7 @@ export function Contact() {
                       placeholder="contact@societe.tn"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors shadow-sm"
+                      className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 h-11"
                     />
                   </div>
                 </div>
@@ -373,7 +378,7 @@ export function Contact() {
                       name="serviceType"
                       value={formData.serviceType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 transition-colors shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 transition-colors shadow-sm h-11"
                     >
                       <option value="Packaging & Boîtes Rigides">Packaging & Boîtes Rigides</option>
                       <option value="Édition Corporate & Catalogues">Édition Corporate & Catalogues</option>
@@ -396,7 +401,7 @@ export function Contact() {
                       name="quantity"
                       value={formData.quantity}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 transition-colors shadow-sm"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 transition-colors shadow-sm h-11"
                     >
                       <option value="100 - 300 exemplaires (Prototype / Tirage court)">100 - 300 exemplaires (Prototype)</option>
                       <option value="500 - 1 000 exemplaires">500 - 1 000 exemplaires</option>
@@ -414,14 +419,14 @@ export function Contact() {
                   >
                     Finitions ou Papiers spécifiques (optionnel)
                   </label>
-                  <input
+                  <Input
                     type="text"
                     id="paperFinishPreference"
                     name="paperFinishPreference"
                     placeholder="Ex: Dorure or chaud, gaufrage relief, pelliculage soft touch..."
                     value={formData.paperFinishPreference}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors shadow-sm"
+                    className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 h-11"
                   />
                 </div>
 
@@ -433,41 +438,36 @@ export function Contact() {
                   >
                     Détails du projet ou dimensions
                   </label>
-                  <textarea
+                  <Textarea
                     id="projectDetails"
                     name="projectDetails"
                     rows={3}
                     placeholder="Indiquez vos dimensions souhaitées, délais impératifs ou particularités techniques..."
                     value={formData.projectDetails}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#D41A78] focus:outline-none text-sm text-slate-900 placeholder-slate-400 transition-colors resize-none shadow-sm"
+                    className="rounded-xl bg-slate-50 border-slate-300 focus:bg-white text-sm text-slate-900 placeholder:text-slate-400 resize-none shadow-sm min-h-[90px]"
                   />
                 </div>
 
-                {/* Submission Pathways with Framer Motion Spring Touch */}
+                {/* Submission Pathways with shadcn Button */}
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                  <motion.button
+                  <Button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-[#2DB8D3] via-[#D41A78] to-[#F3C215] text-white font-bold text-sm shadow-md"
+                    className="flex-1 rounded-xl bg-gradient-to-r from-[#2DB8D3] via-[#D41A78] to-[#F3C215] text-white font-bold text-sm shadow-md h-12 hover:opacity-95 transition-opacity"
                   >
-                    <MessageCircle className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4 mr-2" />
                     <span>Transmettre via WhatsApp</span>
-                  </motion.button>
+                  </Button>
 
-                  <motion.button
+                  <Button
                     type="button"
+                    variant="outline"
                     onClick={handleEmailSubmit}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-300 text-slate-800 text-sm font-semibold transition-colors"
+                    className="rounded-xl bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-800 text-sm font-semibold h-12"
                   >
-                    <Mail className="w-4 h-4 text-[#D41A78]" />
+                    <Mail className="w-4 h-4 mr-2 text-[#D41A78]" />
                     <span>Envoyer par Email</span>
-                  </motion.button>
+                  </Button>
                 </div>
 
                 {/* Notification message with AnimatePresence */}

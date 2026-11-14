@@ -257,7 +257,7 @@ export function PerspectiveTunnelHero({
   return (
     <div
       ref={trackRef}
-      className={`relative w-full h-[220vh] sm:h-[260vh] ${className || ""}`}
+      className={`relative w-full h-[135vh] sm:h-[155vh] ${className || ""}`}
     >
       {/* Pinned Sticky Viewport: Remains in view while user scrolls the main scroll bar */}
       <div

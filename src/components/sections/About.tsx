@@ -29,54 +29,54 @@ export function About() {
       }
 
       gsap.from(headingRef.current, {
-        y: 35,
+        y: 20,
         opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
+        duration: 0.5,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
+          start: "top 92%",
+          once: true,
         },
       });
 
       gsap.from(quoteRef.current, {
-        x: 30,
+        x: 20,
         opacity: 0,
-        duration: 0.8,
-        delay: 0.15,
-        ease: "power3.out",
+        duration: 0.5,
+        delay: 0.08,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: quoteRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
+          start: "top 92%",
+          once: true,
         },
       });
 
       gsap.from(visualRef.current, {
-        scale: 0.96,
+        scale: 0.98,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.5,
         ease: "power2.out",
         scrollTrigger: {
           trigger: visualRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
+          start: "top 90%",
+          once: true,
         },
       });
 
       if (pillarsRef.current) {
         const pillarItems = pillarsRef.current.children;
         gsap.from(pillarItems, {
-          y: 25,
+          y: 20,
           opacity: 0,
-          duration: 0.7,
-          stagger: 0.15,
-          ease: "power3.out",
+          duration: 0.45,
+          stagger: 0.06,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: pillarsRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+            start: "top 90%",
+            once: true,
           },
         });
       }

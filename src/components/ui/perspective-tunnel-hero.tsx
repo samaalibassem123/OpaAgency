@@ -79,10 +79,10 @@ interface TunnelCardProps {
 }
 
 function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) {
-  // Stagger calculation: each card enters sequentially across the first 45% of scroll
-  const entryStart = (card.index / total) * 0.42;
-  const entryEnd = entryStart + 0.28;
-  const exitStart = 0.86;
+  // Stagger calculation: each card enters sequentially across the first 30% of scroll
+  const entryStart = (card.index / total) * 0.30;
+  const entryEnd = entryStart + 0.22;
+  const exitStart = 0.82;
   const exitEnd = 1.0;
 
   const farZ = stage.isMobile ? -850 : -1200;
@@ -98,7 +98,7 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
       farZ,
       farZ * 0.75,
       stickyZ,
-      stickyZ + 30, // subtle, elegant slow drift while sticking
+      stickyZ + 40, // subtle, elegant slow drift while sticking
       exitZ,
     ]
   );
@@ -108,8 +108,8 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
     progress,
     [0, entryStart, Math.min(entryEnd * 0.9, 0.75), exitStart, exitEnd],
     [
-      0.65, // Elegant rest visibility at page top
-      0.82, // Gliding in
+      0.72, // Elegant rest visibility at page top
+      0.88, // Gliding in
       1.0,  // Full solid tactile presence
       1.0,  // STICKS fully visible throughout the sequence!
       0,    // Smooth exit only when reaching the next section
@@ -120,11 +120,11 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
   const scale = useTransform(
     progress,
     [0, entryStart, entryEnd, exitStart, exitEnd],
-    [0.82, 0.88, 1.04, 1.04, 1.1]
+    [0.85, 0.90, 1.02, 1.04, 1.08]
   );
 
   const cardWidth = stage.isMobile
-    ? Math.max(120, Math.min(160, stage.width * 0.36))
+    ? Math.max(95, Math.min(120, stage.width * 0.28))
     : Math.max(180, Math.min(270, stage.width * 0.18));
 
   const baseX = card.angleCos * (stage.width * card.radiusFactorX);
@@ -212,12 +212,12 @@ export function PerspectiveTunnelHero({
 
   const tunnelCards: TunnelCardData[] = images.map((item, i) => {
     const goldenAngle = i * 137.5 * (Math.PI / 180);
-    // On mobile, distribute slightly wider to keep central text fully readable
+    // On mobile, keep orbit strictly contained within the mobile viewport
     const radiusFactorX = stage.isMobile
-      ? 0.40 + (i % 3) * 0.08
+      ? 0.18 + (i % 3) * 0.04
       : 0.44 + (i % 3) * 0.09;
     const radiusFactorY = stage.isMobile
-      ? 0.38 + (i % 2) * 0.08
+      ? 0.22 + (i % 2) * 0.05
       : 0.40 + (i % 2) * 0.11;
 
     return {
@@ -248,20 +248,20 @@ export function PerspectiveTunnelHero({
   const pointer = useCameraParallax(!reduce && !stage.isMobile);
 
   // Central headline stays solid through most of the scroll, fading gently on exit
-  const titleScale = useTransform(smoothProgress, [0, 0.7, 0.9, 1], [1, 1.02, 1.06, 1.12]);
-  const titleOpacity = useTransform(smoothProgress, [0, 0.75, 0.92, 1], [1, 1, 0.8, 0]);
-  const promptOpacity = useTransform(smoothProgress, [0, 0.15], [1, 0]);
+  const titleScale = useTransform(smoothProgress, [0, 0.75, 0.92, 1], [1, 1.02, 1.05, 1.1]);
+  const titleOpacity = useTransform(smoothProgress, [0, 0.80, 0.95, 1], [1, 1, 0.7, 0]);
+  const promptOpacity = useTransform(smoothProgress, [0, 0.12], [1, 0]);
 
   const whatsappUrl = buildWhatsAppUrl();
 
   return (
     <div
       ref={trackRef}
-      className={`relative w-full h-[135vh] sm:h-[155vh] ${className || ""}`}
+      className={`relative w-full max-w-full overflow-visible h-[195vh] sm:h-[240vh] ${className || ""}`}
     >
       {/* Pinned Sticky Viewport: Remains in view while user scrolls the main scroll bar */}
       <div
-        className="sticky top-0 h-screen w-full overflow-hidden bg-white text-slate-900 select-none flex items-center justify-center pt-20 pb-16 touch-pan-y"
+        className="sticky top-0 h-screen w-full max-w-full overflow-hidden bg-white text-slate-900 select-none flex items-center justify-center pt-20 pb-16 touch-pan-y"
         style={{
           perspective: stage.isMobile ? "850px" : "1200px",
           transformStyle: "preserve-3d",
@@ -270,10 +270,10 @@ export function PerspectiveTunnelHero({
         {/* Central Anchor Typography & Action CTAs */}
         <motion.div
           style={{ scale: titleScale, opacity: titleOpacity }}
-          className="pointer-events-none z-30 relative flex flex-col items-center text-center px-4 sm:px-6 max-w-3xl [transform:translateZ(180px)]"
+          className="pointer-events-none z-30 relative flex flex-col items-center text-center px-4 sm:px-6 max-w-3xl [transform:translateZ(180px)] w-full max-w-full"
         >
           {/* Frosted ambient glass aura behind text for optimal contrast */}
-          <div className="absolute -inset-4 sm:-inset-6 -z-10 rounded-3xl bg-white/80 backdrop-blur-md opacity-95 pointer-events-none shadow-[0_10px_40px_rgba(255,255,255,0.95)]" />
+          <div className="absolute inset-0 sm:-inset-6 -z-10 rounded-3xl bg-white/80 backdrop-blur-md opacity-95 pointer-events-none shadow-[0_10px_40px_rgba(255,255,255,0.95)]" />
 
           {/* Top Eyebrow Badge */}
           <div className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/90 backdrop-blur-md border border-slate-200/90 shadow-sm mb-4 sm:mb-5 pointer-events-auto">
@@ -341,6 +341,23 @@ export function PerspectiveTunnelHero({
             />
           ))}
         </div>
+
+        {/* Subtle Scroll Hint */}
+        <motion.div
+          style={{ opacity: promptOpacity }}
+          className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 pointer-events-none z-20 text-slate-400 select-none"
+        >
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+            Défiler
+          </span>
+          <div className="w-4 h-7 rounded-full border border-slate-300 flex items-start justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-1 rounded-full bg-slate-400"
+            />
+          </div>
+        </motion.div>
       </div>
     </div>
   );

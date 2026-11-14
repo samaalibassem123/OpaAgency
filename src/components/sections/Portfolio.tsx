@@ -51,7 +51,7 @@ export function Portfolio() {
   );
 
   return (
-    <section ref={containerRef} id="portfolio" className="relative py-24 sm:py-32 lg:py-40 bg-slate-50/70 border-t border-slate-200/80">
+    <section ref={containerRef} id="portfolio" className="relative py-24 sm:py-32 lg:py-40 bg-slate-50/70 border-t border-slate-200/80 w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Heading & Category Filters */}
         <div ref={headerRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">

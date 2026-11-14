@@ -5,12 +5,13 @@ import { navigationItems } from "@/config/navigation";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { ArrowUp, Instagram, Facebook, MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 import { OpaLogo } from "@/components/ui/opa-logo";
+import { FooterMap } from "@/components/layout/FooterMap";
 
 export function Footer() {
   const whatsappUrl = buildWhatsAppUrl();
 
   return (
-    <footer className="relative bg-slate-50 border-t border-slate-200 pt-20 pb-12 overflow-hidden text-slate-900">
+    <footer className="relative bg-slate-50 border-t border-slate-200 pt-20 pb-12 overflow-hidden text-slate-900 w-full max-w-full">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-slate-200">
           {/* Column 1: Brand & Positioning */}
@@ -146,6 +147,9 @@ export function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Interactive Location Map */}
+        <FooterMap />
 
         {/* Bottom Bar: Copyright & Scroll to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">

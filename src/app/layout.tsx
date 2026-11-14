@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -153,7 +153,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-white text-slate-900 selection:bg-[#D41A78] selection:text-white overflow-x-hidden font-sans">
+      <body className="min-h-screen bg-white text-slate-900 selection:bg-[#D41A78] selection:text-white overflow-x-clip font-sans">
         {/* Physical Paper Grain Texture Overlay */}
         <div className="paper-grain" aria-hidden="true" />
         <SmoothScrollProvider>

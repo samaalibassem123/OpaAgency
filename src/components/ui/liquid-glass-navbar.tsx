@@ -16,6 +16,8 @@ export interface LiquidGlassNavBarProps {
   defaultActiveId?: string;
   onItemSelect?: (item: LiquidNavItem) => void;
   className?: string;
+  tone?: "light" | "dark";
+  sound?: boolean;
 }
 
 export const DEFAULT_NAV_ITEMS: LiquidNavItem[] = [
@@ -27,12 +29,44 @@ export const DEFAULT_NAV_ITEMS: LiquidNavItem[] = [
   { id: "contact", label: "Contact", href: "#contact" },
 ];
 
+/**
+ * Synthesizes a subtle, pleasant water droplet click pop using Web Audio API
+ */
+function playDropletAudio() {
+  try {
+    const AudioCtx =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    if (ctx.state === "suspended") {
+      ctx.resume();
+    }
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    const now = ctx.currentTime;
+    osc.frequency.setValueAtTime(520, now);
+    osc.frequency.exponentialRampToValueAtTime(880, now + 0.045);
+    gain.gain.setValueAtTime(0.05, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.055);
+  } catch {
+    // AudioContext blocked or unsupported
+  }
+}
+
 export function LiquidGlassNavBar({
   items = DEFAULT_NAV_ITEMS,
   activeId: controlledActiveId,
   defaultActiveId = items[0]?.id || "accueil",
   onItemSelect,
   className,
+  tone = "light",
+  sound = true,
 }: LiquidGlassNavBarProps) {
   const [internalActiveId, setInternalActiveId] = React.useState<string>(defaultActiveId);
   const activeId = controlledActiveId !== undefined ? controlledActiveId : internalActiveId;
@@ -44,6 +78,10 @@ export function LiquidGlassNavBar({
     setInternalActiveId(item.id);
     setClickedId(item.id);
     setRippleKey((prev) => prev + 1);
+
+    if (sound) {
+      playDropletAudio();
+    }
 
     if (onItemSelect) {
       onItemSelect(item);
@@ -76,18 +114,20 @@ export function LiquidGlassNavBar({
     }
   };
 
+  const isDark = tone === "dark";
+
   return (
     <nav
       className={cn(
         "relative inline-flex items-center h-full p-1 rounded-full",
-        "bg-slate-100/70 backdrop-blur-xl",
-        "border border-slate-200/70",
-        "shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]",
+        isDark
+          ? "bg-slate-900/50 backdrop-blur-md border border-white/10 shadow-[inset_0_1px_2px_rgba(255,255,255,0.06)]"
+          : "bg-slate-100/40 backdrop-blur-md border border-slate-200/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.03)]",
         className
       )}
       onMouseLeave={() => setHoveredId(null)}
       role="menubar"
-      aria-label="Menu Principal Liquide Glass"
+      aria-label="Menu Principal Liquid Glass"
     >
       {items.map((item) => {
         const isActive = activeId === item.id;
@@ -102,79 +142,80 @@ export function LiquidGlassNavBar({
             role="menuitem"
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "relative z-10 flex items-center justify-center h-full px-3.5 sm:px-4 lg:px-5 rounded-full",
+              "relative z-10 flex items-center justify-center h-full px-4 sm:px-5 lg:px-6 rounded-full",
               "text-xs sm:text-[13px] lg:text-sm font-medium transition-colors duration-200 select-none tracking-tight",
               isActive
-                ? "text-slate-950 font-bold"
+                ? isDark
+                  ? "text-white font-bold"
+                  : "text-slate-950 font-bold"
                 : isHovered
-                  ? "text-slate-900 font-semibold"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? isDark
+                    ? "text-slate-100 font-semibold"
+                    : "text-slate-900 font-semibold"
+                  : isDark
+                    ? "text-slate-400 hover:text-slate-100"
+                    : "text-slate-600 hover:text-slate-900"
             )}
           >
-            {/* Sliding Liquid Glass Capsule (Inspired by Guglielmo Giannattasio & Apple Liquid Glass) */}
+            {/* Sliding Pure Liquid Glass Capsule (Neutral, Elegant, Non-Neon) */}
             {isActive && (
               <motion.div
                 layoutId="active-liquid-glass-pill"
                 transition={{
                   type: "spring",
-                  stiffness: 420,
+                  stiffness: 400,
                   damping: 32,
                   mass: 0.65,
                 }}
                 className={cn(
                   "absolute inset-0 rounded-full z-[-1]",
-                  "bg-gradient-to-b from-white/98 via-white/92 to-white/85",
-                  "backdrop-blur-md",
-                  // Deep multi-tier shadow + physical inner bevel
-                  "shadow-[0_4px_20px_-2px_rgba(15,23,42,0.12),0_2px_6px_-1px_rgba(15,23,42,0.06),inset_0_1.5px_1px_0_rgba(255,255,255,0.95),inset_0_-1px_2px_0_rgba(15,23,42,0.04)]"
+                  isDark
+                    ? "bg-gradient-to-b from-slate-800/95 via-slate-850/90 to-slate-900/85 border border-white/15"
+                    : "bg-gradient-to-b from-white/98 via-white/92 to-white/86 border border-white/90",
+                  "backdrop-blur-xl",
+                  // Tactile physical depth & double-bevel without saturated neon glows
+                  isDark
+                    ? "shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5),inset_0_1.5px_1px_0_rgba(255,255,255,0.2),inset_0_-1px_2px_0_rgba(0,0,0,0.4)]"
+                    : "shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08),0_1px_4px_rgba(15,23,42,0.04),inset_0_1.5px_1px_0_rgba(255,255,255,1),inset_0_-1px_1.5px_0_rgba(15,23,42,0.03)]"
                 )}
               >
-                {/* Chromatic Aberration & Iridescent Glass Rim (Cyan -> Magenta -> Gold dispersion) */}
-                <div
-                  className="absolute -inset-[1px] rounded-full pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(45,184,211,0.65) 0%, rgba(255,255,255,0.95) 30%, rgba(212,26,120,0.5) 70%, rgba(243,194,21,0.45) 100%)",
-                    mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                    WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                    maskComposite: "exclude",
-                    WebkitMaskComposite: "xor",
-                    padding: "1.2px",
-                  }}
-                />
-
-                {/* Top Specular Razor Highlight */}
+                {/* Crisp Top Specular Highlight */}
                 <div className="absolute inset-x-4 top-0 h-[1.5px] rounded-full bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none" />
 
-                {/* Soft Liquid Droplet Meniscus Highlight */}
-                <div className="absolute inset-0 rounded-full bg-radial from-white/50 via-transparent to-transparent pointer-events-none" />
+                {/* Soft Radial Meniscus Ambient Highlight */}
+                <div className="absolute inset-0 rounded-full bg-radial from-white/35 via-transparent to-transparent pointer-events-none" />
 
-                {/* Water Droplet Wave Pulse on Click */}
+                {/* Neutral Water Droplet Wave Pulse on Click */}
                 <AnimatePresence>
                   {clickedId === item.id && (
                     <motion.span
                       key={`ripple-${rippleKey}`}
-                      initial={{ scale: 0.75, opacity: 0.95 }}
+                      initial={{ scale: 0.75, opacity: 0.8 }}
                       animate={{ scale: 1.45, opacity: 0 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                      className="absolute inset-0 rounded-full pointer-events-none border border-[#2DB8D3]/60 shadow-[0_0_16px_rgba(212,26,120,0.4)]"
+                      transition={{ duration: 0.45, ease: "easeOut" }}
+                      className="absolute inset-0 rounded-full pointer-events-none border border-white/90 shadow-[0_0_12px_rgba(255,255,255,0.7)]"
                     />
                   )}
                 </AnimatePresence>
               </motion.div>
             )}
 
-            {/* Hover Indicator for Inactive Items */}
+            {/* Hover Meniscus Indicator for Inactive Items */}
             {!isActive && isHovered && (
               <motion.div
-                layoutId="hover-pill"
-                transition={{ duration: 0.15 }}
-                className="absolute inset-0 rounded-full bg-white/70 shadow-sm z-[-1]"
+                layoutId="liquid-nav-hover"
+                transition={{ duration: 0.16, ease: "easeOut" }}
+                className={cn(
+                  "absolute inset-0 rounded-full z-[-1]",
+                  isDark
+                    ? "bg-white/10 backdrop-blur-md border border-white/10 shadow-sm"
+                    : "bg-white/50 backdrop-blur-md border border-white/70 shadow-[0_2px_8px_rgba(0,0,0,0.03)]"
+                )}
               />
             )}
 
-            <span>{item.label}</span>
+            <span className="whitespace-nowrap">{item.label}</span>
           </a>
         );
       })}
@@ -182,4 +223,5 @@ export function LiquidGlassNavBar({
   );
 }
 
+export const LiquidNavbar = LiquidGlassNavBar;
 export default LiquidGlassNavBar;

@@ -1,0 +1,513 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - img "OPA Imprimerie • Our Print Agency" [ref=f3e4] [cursor=pointer]
+    - generic [ref=f3e5]:
+      - generic [ref=f3e6]: OPA Imprimerie
+      - paragraph [ref=f3e11]: L'Artisanat de Précision • Grand Format & Packaging
+    - button "Passer l'introduction →" [ref=f3e12] [cursor=pointer]
+  - banner [ref=f3e13]:
+    - generic [ref=f3e14]:
+      - link [ref=f3e15] [cursor=pointer]:
+        - /url: /
+        - img "OPA Imprimerie — Our Print Agency" [ref=f3e17]
+      - button "Ouvrir le menu" [ref=f3e18] [cursor=pointer]
+  - main [ref=f3e20]:
+    - generic [ref=f3e23]:
+      - generic:
+        - generic [ref=f3e24]: "Imprimerie OPA: Our Print Agency"
+        - heading "L'Artisanat du Papier, la Précision d'Impression." [level=1]
+        - paragraph: "Atelier de référence à Tunis : packaging de prestige, boîtes rigides sur-mesure, dorure à chaud et façonnage haute précision."
+        - generic [ref=f3e30]:
+          - link "Demander un Devis Gratuit" [ref=f3e31] [cursor=pointer]:
+            - /url: "#contact"
+          - link "WhatsApp Express (+216 21 808 818)" [ref=f3e36] [cursor=pointer]:
+            - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20un%20projet%20d'impression%20%2F%20packaging.%0AMerci%20de%20me%20recontacter.
+      - generic:
+        - generic:
+          - generic:
+            - img "Coffret Parfumerie"
+            - generic:
+              - generic: Packaging de Luxe
+              - generic: Coffret Parfumerie
+        - generic:
+          - generic:
+            - img "Dorure à Chaud"
+            - generic:
+              - generic: Carterie d'Art
+              - generic: Dorure à Chaud
+        - generic:
+          - generic:
+            - img "Livre d'Art & RSE"
+            - generic:
+              - generic: Édition Corporate
+              - generic: Livre d'Art & RSE
+        - generic:
+          - generic:
+            - img "Étuis Cosmétiques"
+            - generic:
+              - generic: Gaufrage 3D
+              - generic: Étuis Cosmétiques
+        - generic:
+          - generic:
+            - img "Chemises & Découpe"
+            - generic:
+              - generic: Façonnage Précision
+              - generic: Chemises & Découpe
+        - generic:
+          - generic:
+            - img "Signalétique Prestige"
+            - generic:
+              - generic: Grand Format
+              - generic: Signalétique Prestige
+        - generic:
+          - generic:
+            - img "Boîtes Rigides"
+            - generic:
+              - generic: Cartonnage Rembordé
+              - generic: Boîtes Rigides
+        - generic:
+          - generic:
+            - img "Vernis Sélectif & Relief"
+            - generic:
+              - generic: Ennoblissement
+              - generic: Vernis Sélectif & Relief
+        - generic:
+          - generic:
+            - img "Impression Offset HD"
+            - generic:
+              - generic: Atelier Haute Fidélité
+              - generic: Impression Offset HD
+    - generic [ref=f3e41]:
+      - generic [ref=f3e42]:
+        - generic [ref=f3e44]:
+          - generic [ref=f3e45]: À Propos d'OPA • Our Print Agency
+          - heading "Une Manufacture Dédiée à l'Émotion du Papier." [level=2] [ref=f3e51]
+          - paragraph [ref=f3e52]: Basée à Ariana et Tunis, la Société OPA allie l'artisanat d'art des maîtres imprimeurs à la rigueur des technologies modernes d'impression et de packaging.
+        - generic [ref=f3e54]:
+          - generic [ref=f3e61]:
+            - generic [ref=f3e62]: Direction d'Atelier
+            - text: M. Marouane Ben Younes
+          - paragraph [ref=f3e63]: "« Notre engagement est d'apporter à chaque marque une qualité d'exécution irréprochable : calage précis, dorure éclatante et papiers nobles. »"
+      - generic [ref=f3e64]:
+        - generic [ref=f3e67]:
+          - img "Détail de façonnage artisanal et dorure par OPA Imprimerie" [ref=f3e68]
+          - generic [ref=f3e70]:
+            - generic [ref=f3e71]: Ateliers de Production à Tunis & Ariana
+            - generic [ref=f3e72]: Fabrication 100% Intégrée
+        - generic [ref=f3e73]:
+          - generic [ref=f3e75]:
+            - heading "Dorure à Chaud & Gaufrage 3D" [level=3] [ref=f3e80]
+            - paragraph [ref=f3e81]: Marquage à chaud or, argent ou teintes métallisées sur fers gravés, gaufrage en relief tactile et vernis sélectif pour magnifier vos supports.
+          - generic [ref=f3e83]:
+            - heading "Packaging & Boîtes Rigides Sur-Mesure" [level=3] [ref=f3e90]
+            - paragraph [ref=f3e91]: Boîtes cloche, étuis cosmétiques, coffrets aimantés et calages personnalisés avec un choix étendu de cartons graphiques et papiers de création.
+          - generic [ref=f3e93]:
+            - heading "Impression Offset & Numérique Haute Définition" [level=3] [ref=f3e99]
+            - paragraph [ref=f3e100]: Catalogues, chemises institutionnelles, carterie de luxe et affichage avec calibrage colorimétrique rigoureux et validation par Bon à Tirer (BAT).
+    - generic [ref=f3e102]:
+      - generic [ref=f3e104]:
+        - generic [ref=f3e105]: Savoir-Faire & Ateliers • 01 — 06
+        - heading "Six Domaines de Fabrication Haute Fidélité." [level=2] [ref=f3e111]
+        - paragraph [ref=f3e112]: De la boîte rigide montée à la main aux tirages offset de grand volume, nous maîtrisons l'intégralité de la chaîne graphique dans nos ateliers à Tunis et Ariana.
+      - tablist [ref=f3e115]:
+        - tab "Tous les Domaines (06)" [selected] [ref=f3e116] [cursor=pointer]
+        - tab "01. Packaging" [ref=f3e123] [cursor=pointer]
+        - tab "02. Dorure à Chaud" [ref=f3e124] [cursor=pointer]
+        - tab "03. Édition Corporate" [ref=f3e125] [cursor=pointer]
+        - tab "04. Papeterie de Prestige" [ref=f3e126] [cursor=pointer]
+        - tab "05. Signalétique" [ref=f3e127] [cursor=pointer]
+        - tab "06. Textile" [ref=f3e128] [cursor=pointer]
+      - generic [ref=f3e129]:
+        - generic [ref=f3e130]:
+          - generic [ref=f3e131]:
+            - generic [ref=f3e132]:
+              - img "Packaging & Boîtes Rigides" [ref=f3e133]
+              - generic [ref=f3e135]: 01 • Packaging
+              - generic [ref=f3e138]: Fermoirs Aimantés • Carton 2.5mm
+            - generic [ref=f3e140]: Cartonnage & Emballages de Luxe
+            - heading "Packaging & Boîtes Rigides" [level=3] [ref=f3e141]
+            - paragraph [ref=f3e142]: Conception et fabrication de coffrets rigides rembordés, étuis pliants cosmétiques, boîtes à fermeture magnétique et calages techniques sur-mesure. Une présence physique imposante pour vos produits.
+            - generic [ref=f3e143]:
+              - generic [ref=f3e144]: Spécialités de l'Atelier
+              - generic [ref=f3e145]:
+                - generic [ref=f3e146]: Coffrets rigides montés main avec fermeture aimantée
+                - generic [ref=f3e150]: Étuis pliants cosmétiques & parfumerie avec fenêtre
+                - generic [ref=f3e154]: Packs gastronomie & chocolaterie aux normes contact alimentaire
+                - generic [ref=f3e158]: Calages intérieurs en mousse haute densité ou carton rainé
+          - generic [ref=f3e162]:
+            - button "Fiche & Délais" [ref=f3e163] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e165] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22Packaging%20%26%20Bo%C3%AEtes%20Rigides%22%20(Cartonnage%20%26%20Emballages%20de%20Luxe).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Packaging & Boîtes Rigides" [ref=f3e169] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=f3e173]:
+          - generic [ref=f3e174]:
+            - generic [ref=f3e175]:
+              - img "Dorure à Chaud & Finitions d'Art" [ref=f3e176]
+              - generic [ref=f3e178]: 02 • Dorure à Chaud
+              - generic [ref=f3e181]: Or 24k • Repérage Optique 0.1mm
+            - generic [ref=f3e183]: Ennoblissement & Reliefs Métalliques
+            - heading "Dorure à Chaud & Finitions d'Art" [level=3] [ref=f3e184]
+            - paragraph [ref=f3e185]: Marquage à chaud or, argent et cuivre sur clichés magnésium CNC, gaufrage 3D tactile multiniveau et vernis sélectif UV pour conférer à chaque support une signature prestigieuse.
+            - generic [ref=f3e186]:
+              - generic [ref=f3e187]: Spécialités de l'Atelier
+              - generic [ref=f3e188]:
+                - generic [ref=f3e189]: Dorure à chaud (Or brillant, Or mat, Cuivre, Holographique)
+                - generic [ref=f3e193]: Gaufrage 3D multiniveau & foulage aveugle de haute précision
+                - generic [ref=f3e197]: Vernis sélectif sérigraphique haute brillance ou effet goutte
+                - generic [ref=f3e201]: Formes de découpe personnalisées et micro-perforations
+          - generic [ref=f3e205]:
+            - button "Fiche & Délais" [ref=f3e206] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e208] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22Dorure%20%C3%A0%20Chaud%20%26%20Finitions%20d'Art%22%20(Ennoblissement%20%26%20Reliefs%20M%C3%A9talliques).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Dorure à Chaud & Finitions d'Art" [ref=f3e212] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=f3e216]:
+          - generic [ref=f3e217]:
+            - generic [ref=f3e218]:
+              - img "Édition Corporate & Catalogues" [ref=f3e219]
+              - generic [ref=f3e221]: 03 • Édition Corporate
+              - generic [ref=f3e224]: Dos Carré PUR • Trame HD
+            - generic [ref=f3e226]: Impression Offset & Livres de Marque
+            - heading "Édition Corporate & Catalogues" [level=3] [ref=f3e227]
+            - paragraph [ref=f3e228]: Rapports annuels d'entreprise, catalogues de collection, chemises à rabat avec encoches cartes et livres de marque avec reliures pérennes et aplats d'encre intenses.
+            - generic [ref=f3e229]:
+              - generic [ref=f3e230]: Spécialités de l'Atelier
+              - generic [ref=f3e231]:
+                - generic [ref=f3e232]: Catalogues commerciaux & brochures d'entreprise haut de gamme
+                - generic [ref=f3e236]: Chemises porte-documents à rabats simples ou doubles
+                - generic [ref=f3e240]: Rapports financiers, bilans RSE et plaquettes institutionnelles
+                - generic [ref=f3e244]: Reliure dos carré collé PUR indéchirable et piqûre métal
+          - generic [ref=f3e248]:
+            - button "Fiche & Délais" [ref=f3e249] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e251] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22%C3%89dition%20Corporate%20%26%20Catalogues%22%20(Impression%20Offset%20%26%20Livres%20de%20Marque).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Édition Corporate & Catalogues" [ref=f3e255] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=f3e259]:
+          - generic [ref=f3e260]:
+            - generic [ref=f3e261]:
+              - img "Papeterie de Prestige & Identité" [ref=f3e262]
+              - generic [ref=f3e264]: 04 • Papeterie de Prestige
+              - generic [ref=f3e267]: Contrecollé 700g • Tranches Teintées
+            - generic [ref=f3e269]: Papiers de Création & Letterpress
+            - heading "Papeterie de Prestige & Identité" [level=3] [ref=f3e270]
+            - paragraph [ref=f3e271]: Cartes de visite multicouches duplex/triplex jusqu'à 700g, têtes de lettre filigranées, enveloppes personnalisées coordonnées et carnets d'art cousus pour dirigeants et marques exigeantes.
+            - generic [ref=f3e272]:
+              - generic [ref=f3e273]: Spécialités de l'Atelier
+              - generic [ref=f3e274]:
+                - generic [ref=f3e275]: Cartes de visite d'art en contrecollé épais (600–700g)
+                - generic [ref=f3e279]: Papiers à en-tête corporate compatibles impression laser & jet d'encre
+                - generic [ref=f3e283]: Enveloppes à patte gommée ou autocollante avec doublure imprimée
+                - generic [ref=f3e287]: Carnets de notes personnalisés avec tranches colorées ou dorées
+          - generic [ref=f3e291]:
+            - button "Fiche & Délais" [ref=f3e292] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e294] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22Papeterie%20de%20Prestige%20%26%20Identit%C3%A9%22%20(Papiers%20de%20Cr%C3%A9ation%20%26%20Letterpress).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Papeterie de Prestige & Identité" [ref=f3e298] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=f3e302]:
+          - generic [ref=f3e303]:
+            - generic [ref=f3e304]:
+              - img "Signalétique & Grand Format" [ref=f3e305]
+              - generic [ref=f3e307]: 05 • Signalétique
+              - generic [ref=f3e310]: Alu Dibond 3mm • Encres UV
+            - generic [ref=f3e312]: Impact Visuel & Impression UV Directe
+            - heading "Signalétique & Grand Format" [level=3] [ref=f3e313]
+            - paragraph [ref=f3e314]: Enseignes lumineuses de façade, panneaux directionnels en aluminium composite Dibond, vitrophanies de boutiques, roll-ups haut de gamme et bâches grand format résistantes aux intempéries.
+            - generic [ref=f3e315]:
+              - generic [ref=f3e316]: Spécialités de l'Atelier
+              - generic [ref=f3e317]:
+                - generic [ref=f3e318]: Enseignes lumineuses LED découpées en relief & caissons rétro-éclairés
+                - generic [ref=f3e322]: Panneaux Dibond 3mm imprimés à plat UV pour devantures & galeries
+                - generic [ref=f3e326]: "Habillage de vitrines : vinyle micro-perforé, sablé dépoli ou teinté masse"
+                - generic [ref=f3e330]: Roll-up cassettes aluminium anodisé & bâches anti-curling dos gris
+          - generic [ref=f3e334]:
+            - button "Fiche & Délais" [ref=f3e335] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e337] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22Signal%C3%A9tique%20%26%20Grand%20Format%22%20(Impact%20Visuel%20%26%20Impression%20UV%20Directe).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Signalétique & Grand Format" [ref=f3e341] [cursor=pointer]:
+              - /url: "#contact"
+        - generic [ref=f3e345]:
+          - generic [ref=f3e346]:
+            - generic [ref=f3e347]:
+              - img "Textile & Objets Promotionnels" [ref=f3e348]
+              - generic [ref=f3e350]: 06 • Textile
+              - generic [ref=f3e353]: Coton Bio 320g • Broderie HD
+            - generic [ref=f3e355]: Sérigraphie d'Art & Cadeaux VIP
+            - heading "Textile & Objets Promotionnels" [level=3] [ref=f3e356]
+            - paragraph [ref=f3e357]: Habillage textile corporate, tote bags en coton biologique épais, coffrets cadeaux de fin d'année et objets de communication marqués avec une fidélité chromatique absolue.
+            - generic [ref=f3e358]:
+              - generic [ref=f3e359]: Spécialités de l'Atelier
+              - generic [ref=f3e360]:
+                - generic [ref=f3e361]: Sérigraphie et broderie sur polos, chemises corporate et vestes
+                - generic [ref=f3e365]: Tote bags écologiques en toile de coton lourd (280–320g/m²)
+                - generic [ref=f3e369]: Carnets de direction, stylos métalliques gravés et coffrets VIP
+                - generic [ref=f3e373]: Packaging cadeau coordonné pour événements de prestige
+          - generic [ref=f3e377]:
+            - button "Fiche & Délais" [ref=f3e378] [cursor=pointer]
+            - link "WhatsApp" [ref=f3e380] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20suis%20tr%C3%A8s%20int%C3%A9ress%C3%A9(e)%20par%20la%20r%C3%A9alisation%20%22Textile%20%26%20Objets%20Promotionnels%22%20(S%C3%A9rigraphie%20d'Art%20%26%20Cadeaux%20VIP).%0APouvez-vous%20m'indiquer%20les%20sp%C3%A9cifications%20techniques%20et%20options%20de%20devis%20pour%20un%20projet%20similaire%20%3F%0AMerci.
+            - link "Devis pour Textile & Objets Promotionnels" [ref=f3e384] [cursor=pointer]:
+              - /url: "#contact"
+    - generic [ref=f3e389]:
+      - generic [ref=f3e390]:
+        - generic [ref=f3e391]:
+          - generic [ref=f3e392]: Galerie de Réalisations • Portfolio
+          - heading "Des Pièces d'Exception, Façonnées à la Main." [level=2] [ref=f3e398]
+          - paragraph [ref=f3e399]: Explorez notre sélection de coffrets, finitions en dorure et supports corporate réalisés pour les marques les plus exigeantes.
+        - generic [ref=f3e400]:
+          - button "Toutes les Pièces" [ref=f3e401] [cursor=pointer]
+          - button "Packaging & Boîtes" [ref=f3e403] [cursor=pointer]
+          - button "Dorure & Gaufrage" [ref=f3e404] [cursor=pointer]
+          - button "Édition & Identité" [ref=f3e405] [cursor=pointer]
+          - button "Signalétique" [ref=f3e406] [cursor=pointer]
+      - generic [ref=f3e407]:
+        - generic [ref=f3e409] [cursor=pointer]:
+          - generic [ref=f3e410]:
+            - img "Coffret Parfumerie Prestige — Édition Noir d'Or" [ref=f3e411]
+            - generic [ref=f3e413]: Packaging de Luxe
+          - generic [ref=f3e414]:
+            - generic [ref=f3e415]:
+              - generic [ref=f3e416]: Haute Parfumerie & Cosmétique
+              - heading "Coffret Parfumerie Prestige — Édition Noir d'Or" [level=3] [ref=f3e417]
+              - paragraph [ref=f3e418]: Coffret rigide habillé d'un papier teinté dans la masse noir profond, marqué à chaud d'une dorure or 24 carats et calage velours haute densité découpé au millimètre.
+            - generic [ref=f3e419]: Découvrir la réalisation
+        - generic [ref=f3e425] [cursor=pointer]:
+          - generic [ref=f3e426]:
+            - img "Identité Exécutive — Cartes Contrecollées 700g" [ref=f3e427]
+            - generic [ref=f3e429]: Finitions d'Art
+          - generic [ref=f3e430]:
+            - generic [ref=f3e431]:
+              - generic [ref=f3e432]: Cabinet d'Avocats & Conseil Stratégique
+              - heading "Identité Exécutive — Cartes Contrecollées 700g" [level=3] [ref=f3e433]
+              - paragraph [ref=f3e434]: Cartes de visite ultra-épaisses créées par contrecollage de deux papiers de création complémentaires avec foulage typographique aveugle et tranche dorée à chaud.
+            - generic [ref=f3e435]: Découvrir la réalisation
+        - generic [ref=f3e441] [cursor=pointer]:
+          - generic [ref=f3e442]:
+            - img "Livre Annuel & Bilan RSE — Édition Architecturale" [ref=f3e443]
+            - generic [ref=f3e445]: Édition & Corporate
+          - generic [ref=f3e446]:
+            - generic [ref=f3e447]:
+              - generic [ref=f3e448]: Groupe Financier & Promotion Immobilière
+              - heading "Livre Annuel & Bilan RSE — Édition Architecturale" [level=3] [ref=f3e449]
+              - paragraph [ref=f3e450]: Ouvrage institutionnel grand format au dos carré collé PUR avec jaquette texturée ajourée au laser, dévoilant une sous-couche dorée aux teintes chaudes.
+            - generic [ref=f3e451]: Découvrir la réalisation
+        - generic [ref=f3e457] [cursor=pointer]:
+          - generic [ref=f3e458]:
+            - img "Ligne Sérum Végétal — Étuis Pliants à Gaufrage Micro" [ref=f3e459]
+            - generic [ref=f3e461]: Packaging & Boîtes
+          - generic [ref=f3e462]:
+            - generic [ref=f3e463]:
+              - generic [ref=f3e464]: Dermocosmétique Naturelle
+              - heading "Ligne Sérum Végétal — Étuis Pliants à Gaufrage Micro" [level=3] [ref=f3e465]
+              - paragraph [ref=f3e466]: Série d'étuis pliants en carton graphique blanc pur avec impression trichromie offset de très haute fidélité et gaufrage tactile simulant la texture végétale.
+            - generic [ref=f3e467]: Découvrir la réalisation
+        - generic [ref=f3e473] [cursor=pointer]:
+          - generic [ref=f3e474]:
+            - img "Chemises de Présentation — Porte-Documents Prestige" [ref=f3e475]
+            - generic [ref=f3e477]: Édition & Corporate
+          - generic [ref=f3e478]:
+            - generic [ref=f3e479]:
+              - generic [ref=f3e480]: Banque Privée & Fonds d'Investissement
+              - heading "Chemises de Présentation — Porte-Documents Prestige" [level=3] [ref=f3e481]
+              - paragraph [ref=f3e482]: Chemises à rabats sur-mesure avec double rainage d'épaisseur pour dossiers volumineux, encoches cartes de visite biseautées et marquage logo en dorure or chaude.
+            - generic [ref=f3e483]: Découvrir la réalisation
+        - generic [ref=f3e489] [cursor=pointer]:
+          - generic [ref=f3e490]:
+            - img "Signalétique Architectural Showroom — Lettres Découpées" [ref=f3e491]
+            - generic [ref=f3e493]: Signalétique
+          - generic [ref=f3e494]:
+            - generic [ref=f3e495]:
+              - generic [ref=f3e496]: Showroom Design & Siège Social
+              - heading "Signalétique Architectural Showroom — Lettres Découpées" [level=3] [ref=f3e497]
+              - paragraph [ref=f3e498]: Enseigne de façade et totem d'accueil en aluminium composite Dibond brossé, rétro-éclairage indirect LED chaud 3000K et lettrage en relief acrylique découpé au laser.
+            - generic [ref=f3e499]: Découvrir la réalisation
+    - generic [ref=f3e506]:
+      - generic [ref=f3e507]:
+        - generic [ref=f3e508]: Exigences & Rigueur
+        - heading "Pourquoi les Marques Exigeantes Choisissent OPA." [level=2] [ref=f3e514]
+        - paragraph [ref=f3e515]: Nous considérons l'imprimerie comme un art appliqué où le toucher d'un papier teinté dans la masse et le relief d'un gaufrage franc définissent la valeur de votre marque.
+        - generic [ref=f3e516]:
+          - generic [ref=f3e517]: Engagements de l'Atelier OPA
+          - generic [ref=f3e518]:
+            - generic [ref=f3e523]:
+              - strong [ref=f3e524]: "Interlocuteur direct :"
+              - text: échangez directement avec les responsables d'atelier pour vos projets.
+            - generic [ref=f3e529]:
+              - strong [ref=f3e530]: "Validation BAT physique :"
+              - text: épreuve papier réelle et contrôle chromatique avant impression.
+            - generic [ref=f3e535]:
+              - strong [ref=f3e536]: "Ateliers à Tunis & Ariana :"
+              - text: pôle de fabrication et bureau commercial à votre écoute.
+          - link "Poser une question à l'Atelier sur WhatsApp" [ref=f3e538] [cursor=pointer]:
+            - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20un%20projet%20d'impression%20%2F%20packaging.%0AMerci%20de%20me%20recontacter.
+      - generic [ref=f3e545]:
+        - generic [ref=f3e548]:
+          - generic [ref=f3e549]: Fidélité des Couleurs
+          - heading "Calibrage Colorimétrique & Épreuvage Fogra" [level=3] [ref=f3e556]
+          - paragraph [ref=f3e557]: Respect absolu de vos chartes graphiques. Maîtrise des encres denses, séparation quadri haute définition et correspondances précises du nuancier Pantone pour un résultat fidèle du premier au dernier exemplaire.
+        - generic [ref=f3e560]:
+          - generic [ref=f3e561]: Manufacture Intégrée
+          - heading "Zéro Sous-Traitance sur les Finitions" [level=3] [ref=f3e567]
+          - paragraph [ref=f3e568]: De l'insolation des plaques au façonnage manuel, découpe, rembordage de boîtes et marquage à chaud, l'intégralité du cycle est maîtrisée dans nos ateliers à Tunis et Ariana.
+        - generic [ref=f3e571]:
+          - generic [ref=f3e572]: Conseil & Sourcing
+          - heading "Sélection Papetière & Prototypage de Boîtes" [level=3] [ref=f3e578]
+          - paragraph [ref=f3e579]: Nous vous orientons vers les meilleurs papiers de création (Fedrigoni, Curious Skin, Invercote) et concevons les formes de découpe sur-mesure pour vos packagings avant le tirage final.
+        - generic [ref=f3e582]:
+          - generic [ref=f3e583]: Logistique & Réactivité
+          - heading "Conditionnement Soigné & Livraison Rapide" [level=3] [ref=f3e591]
+          - paragraph [ref=f3e592]: Interlocuteur direct avec notre direction d'atelier. Conditionnement protecteur pour préserver les finitions sensibles et expéditions rapides sur le Grand Tunis et toute la Tunisie.
+    - generic [ref=f3e594]:
+      - generic [ref=f3e596]:
+        - generic [ref=f3e597]: Consultation & Estimation Directe
+        - heading "Initiez Votre Projet avec l'Atelier." [level=2] [ref=f3e603]
+        - paragraph [ref=f3e604]: Que vous ayez un cahier des charges abouti ou besoin d'un conseil d'ingénierie papetière, notre équipe technique vous répond sous 24h ouvrées.
+      - generic [ref=f3e605]:
+        - generic [ref=f3e606]:
+          - generic [ref=f3e607]:
+            - generic [ref=f3e608]: Canal Prioritaire • Réponse Rapide
+            - heading "WhatsApp Business Direct" [level=3] [ref=f3e611]
+            - paragraph [ref=f3e612]: Échangez immédiatement avec notre responsable d'atelier pour poser vos questions techniques, envoyer vos maquettes ou obtenir un chiffrage express.
+            - link "Ouvrir WhatsApp (+216 21 808 818)" [ref=f3e613] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20un%20projet%20d'impression%20%2F%20packaging.%0AMerci%20de%20me%20recontacter.
+          - generic [ref=f3e617]:
+            - generic [ref=f3e618]: Ateliers & Coordonnées Officielles
+            - generic [ref=f3e623]:
+              - generic [ref=f3e624]: Téléphone Direct & Urgences Tirage
+              - link "+216 21 808 818" [ref=f3e625] [cursor=pointer]:
+                - /url: tel:21621808818
+            - generic [ref=f3e631]:
+              - generic [ref=f3e632]: Envoi Fichiers Prépresse & Devis PDF
+              - link "contact@imprimerie-opa.com" [ref=f3e633] [cursor=pointer]:
+                - /url: mailto:contact@imprimerie-opa.com
+            - generic [ref=f3e639]:
+              - generic [ref=f3e640]: Atelier de Production & Studio Graphique
+              - generic [ref=f3e641]: Local L14, Résidence Marwa, Cité El Mostakbel, Rue Jbal Echaanbi
+              - text: Ariana Médina, 2080 Tunis
+            - generic [ref=f3e648]:
+              - generic [ref=f3e649]: Bureau Commercial & Relation Client
+              - generic [ref=f3e650]: 15 Rue de la Commission
+              - text: 1002 Tunis
+            - generic [ref=f3e656]:
+              - generic [ref=f3e657]: Horaires d'Ouverture des Ateliers
+              - generic [ref=f3e658]: "Du Lundi au Vendredi : 08h30 – 18h00 | Samedi : 08h30 – 13h00"
+        - generic [ref=f3e660]:
+          - generic [ref=f3e662]:
+            - text: Simulateur de Devis
+            - heading "Configurez votre Demande" [level=3] [ref=f3e663]
+          - generic [ref=f3e664]:
+            - generic [ref=f3e665]:
+              - generic [ref=f3e666]:
+                - generic [ref=f3e667]: Nom complet *
+                - textbox "Nom complet *" [ref=f3e668]:
+                  - /placeholder: M. ou Mme...
+              - generic [ref=f3e669]:
+                - generic [ref=f3e670]: Société / Marque (optionnel)
+                - textbox "Société / Marque (optionnel)" [ref=f3e671]:
+                  - /placeholder: Nom de votre entreprise
+            - generic [ref=f3e672]:
+              - generic [ref=f3e673]:
+                - generic [ref=f3e674]: Numéro de téléphone *
+                - textbox "Numéro de téléphone *" [ref=f3e675]:
+                  - /placeholder: +216 ...
+              - generic [ref=f3e676]:
+                - generic [ref=f3e677]: Adresse email *
+                - textbox "Adresse email *" [ref=f3e678]:
+                  - /placeholder: contact@societe.tn
+            - generic [ref=f3e679]:
+              - generic [ref=f3e680]:
+                - generic [ref=f3e681]: Discipline requise
+                - combobox "Discipline requise" [ref=f3e682]:
+                  - option "Packaging & Boîtes Rigides" [selected]
+                  - option "Édition Corporate & Catalogues"
+                  - option "Papeterie de Prestige (Cartes 700g)"
+                  - option "Dorure à Chaud & Finitions d'Art"
+                  - option "Signalétique & Panneaux Dibond"
+                  - option "Textile & Goodies de Marque"
+              - generic [ref=f3e683]:
+                - generic [ref=f3e684]: Quantité envisagée
+                - combobox "Quantité envisagée" [ref=f3e685]:
+                  - option "100 - 300 exemplaires (Prototype)"
+                  - option "500 - 1 000 exemplaires" [selected]
+                  - option "2 000 - 5 000 exemplaires"
+                  - option "10 000+ exemplaires (Volume industriel)"
+            - generic [ref=f3e686]:
+              - generic [ref=f3e687]: Finitions ou Papiers spécifiques (optionnel)
+              - textbox "Finitions ou Papiers spécifiques (optionnel)" [ref=f3e688]:
+                - /placeholder: "Ex: Dorure or chaud, gaufrage relief, pelliculage soft touch..."
+                - text: Dorure à chaud & Pelliculage mat
+            - generic [ref=f3e689]:
+              - generic [ref=f3e690]: Détails du projet ou dimensions
+              - textbox "Détails du projet ou dimensions" [ref=f3e691]:
+                - /placeholder: Indiquez vos dimensions souhaitées, délais impératifs ou particularités techniques...
+            - generic [ref=f3e692]:
+              - button "Transmettre via WhatsApp" [ref=f3e693] [cursor=pointer]
+              - button "Envoyer par Email" [ref=f3e695] [cursor=pointer]
+            - generic [ref=f3e697]: "* Informations traitées confidentiellement par notre atelier d'Ariana."
+  - contentinfo [ref=f3e699]:
+    - generic [ref=f3e700]:
+      - generic [ref=f3e701]:
+        - generic [ref=f3e702]:
+          - link [ref=f3e703] [cursor=pointer]:
+            - /url: /
+            - img "OPA Imprimerie — Our Print Agency" [ref=f3e705]
+          - paragraph [ref=f3e706]:
+            - strong [ref=f3e707]: Imprimerie OPA (Our Print Agency)
+            - text: — Atelier d’impression haut de gamme et manufacture de packaging de luxe à Tunis et Ariana. Boîtes rigides rembordées, dorure à chaud, gaufrage 3D, carterie d'art et offset de précision en Tunisie.
+          - generic [ref=f3e708]:
+            - 'link "Facebook: Imprimerie OPA: Our Print Agency" [ref=f3e709] [cursor=pointer]':
+              - /url: https://www.facebook.com/517971528545905
+            - link "Instagram @imprimerie.opa" [ref=f3e712] [cursor=pointer]:
+              - /url: https://www.instagram.com/imprimerie.opa?mdxt=Y284N3l3MHprY2g2
+            - link "WhatsApp Business Direct" [ref=f3e716] [cursor=pointer]:
+              - /url: https://wa.me/21621808818?text=Bonjour%20OPA%20Imprimerie%2C%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20un%20projet%20d'impression%20%2F%20packaging.%0AMerci%20de%20me%20recontacter.
+            - link "Appeler OPA Imprimerie" [ref=f3e719] [cursor=pointer]:
+              - /url: tel:21621808818
+            - link "Email OPA Imprimerie" [ref=f3e722] [cursor=pointer]:
+              - /url: mailto:contact@imprimerie-opa.com
+        - generic [ref=f3e726]:
+          - generic [ref=f3e727]: Navigation
+          - list [ref=f3e728]:
+            - listitem [ref=f3e729]:
+              - link "Atelier" [ref=f3e730] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=f3e731]:
+              - link "Expertises" [ref=f3e732] [cursor=pointer]:
+                - /url: "#services"
+            - listitem [ref=f3e733]:
+              - link "Réalisations" [ref=f3e734] [cursor=pointer]:
+                - /url: "#portfolio"
+            - listitem [ref=f3e735]:
+              - link "Exigences" [ref=f3e736] [cursor=pointer]:
+                - /url: "#pourquoi-opa"
+            - listitem [ref=f3e737]:
+              - link "Contact" [ref=f3e738] [cursor=pointer]:
+                - /url: "#contact"
+        - generic [ref=f3e739]:
+          - generic [ref=f3e740]: Ateliers & Coordonnées
+          - generic [ref=f3e741]:
+            - generic [ref=f3e746]:
+              - generic [ref=f3e747]: Atelier de Production & Studio Graphique
+              - text: Local L14, Résidence Marwa, Cité El Mostakbel, Rue Jbal Echaanbi
+              - generic [ref=f3e748]: Ariana Médina, 2080 Tunis
+            - generic [ref=f3e753]:
+              - generic [ref=f3e754]: Bureau Commercial & Relation Client
+              - text: 15 Rue de la Commission
+              - generic [ref=f3e755]: 1002 Tunis
+            - generic [ref=f3e759]:
+              - generic [ref=f3e760]: Page Facebook
+              - 'link "Imprimerie OPA: Our Print Agency" [ref=f3e761] [cursor=pointer]':
+                - /url: https://www.facebook.com/517971528545905
+            - generic [ref=f3e765]:
+              - generic [ref=f3e766]: Direction & Devis Direct
+              - link "+216 21 808 818" [ref=f3e767] [cursor=pointer]:
+                - /url: tel:21621808818
+      - generic [ref=f3e768]:
+        - paragraph [ref=f3e769]: © 2026 Société OPA — Our Print Agency. Tous droits réservés.
+        - generic [ref=f3e770]:
+          - generic [ref=f3e771]: Impression CMYK & Packaging de Luxe • Tunisie
+          - link "Retourner en haut de page" [ref=f3e772] [cursor=pointer]:
+            - /url: "#hero"
+  - alert [ref=f3e775]

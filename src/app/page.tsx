@@ -19,7 +19,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Single-Page Landing Core */}
-      <main className="relative flex flex-col min-h-screen bg-white text-slate-900">
+      <main className="relative flex flex-col min-h-screen bg-white text-slate-900 w-full max-w-full overflow-x-clip">
         <Hero />
         <About />
         <Services />

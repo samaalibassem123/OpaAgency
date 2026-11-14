@@ -108,7 +108,7 @@ export function WhyChooseUs() {
   );
 
   return (
-    <section ref={containerRef} id="pourquoi-opa" className="relative py-24 sm:py-32 bg-white border-t border-slate-200/80">
+    <section ref={containerRef} id="pourquoi-opa" className="relative py-24 sm:py-32 bg-white border-t border-slate-200/80 w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Asymmetric Editorial Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-16">

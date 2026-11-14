@@ -1,0 +1,7 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - img "OPA Imprimerie • Our Print Agency" [ref=f2e4] [cursor=pointer]
+    - generic [ref=f2e5]:
+      - generic [ref=f2e6]: OPA Imprimerie
+      - paragraph [ref=f2e11]: L'Artisanat de Précision • Chargement de l'Atelier
+  - alert [ref=f2e12]

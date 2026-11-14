@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="8" fill="#FFFFFF"/>
+  <rect width="30" height="30" x="1" y="1" rx="7" fill="none" stroke="#E2E8F0" stroke-width="1"/>
+  <!-- Top apex -->
+  <path d="M12 9 L16 5 L20 9" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Yellow wave -->
+  <path d="M11 14 C11 12.5, 21 12.5, 21 14 C21 15.5, 11 15.5, 11 17" stroke="#F3C215" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <!-- Magenta wave -->
+  <path d="M11 18 C11 17, 21 17, 21 19 C21 21, 11 21, 11 23" stroke="#D41A78" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <!-- Cyan wave -->
+  <path d="M11 24 C11 27, 21 27, 21 24" stroke="#2DB8D3" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+</svg>

@@ -109,6 +109,7 @@ This document governs all architectural, design, engineering, animation, quality
 
 ## 6. Component Naming & Authoring Rules
 
+- **shadcn/ui Component-First Policy:** Always prioritize using standard `shadcn/ui` accessible primitives located in `src/components/ui/` (e.g., `Button`, `Dialog`, `Sheet`, `DropdownMenu`, `Card`, `Badge`, `Tabs`, `Separator`, `Input`, `Textarea`, etc.). Never write raw, unstyled interactive elements or roll custom modal/drawer/dropdown logic when an equivalent shadcn primitive exists. Use the official `shadcn` MCP or CLI (`npx shadcn@latest add <component>`) to inspect registry items and install primitives cleanly.
 - **Component Files:** PascalCase (`Hero.tsx`, `PortfolioGrid.tsx`). One component per file.
 - **Utility / Config Files:** kebab-case or camelCase (`site-config.ts`, `animations.ts`).
 - **Props Typing:** Every component must declare an explicit TypeScript interface (e.g. `interface HeroProps { ... }`).

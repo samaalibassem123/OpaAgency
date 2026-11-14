@@ -154,7 +154,17 @@ export function LocalBusinessSchema() {
 
 ---
 
-## 4. Strict Quality & TypeScript Rules
+## 4. shadcn/ui Component Integration & Discipline
+
+### 4.1 Strict shadcn/ui Usage
+- **Single Component Location:** All UI primitives must reside strictly in `@/components/ui/` (`src/components/ui/`).
+- **Prerequisite Check:** Before coding any interactive element (buttons, forms, modals, tabs, accordion, tooltips, sliders, sheets, dropdowns), verify if a `shadcn/ui` primitive is available.
+- **MCP & CLI First:** Use the configured `shadcn` MCP server (`search_items_in_registries`, `view_items_in_registries`, `get_add_command_for_items`) to discover and add components with zero duplicate code.
+- **Composition over Reinvention:** Style and customize shadcn primitives using Tailwind CSS variants (`cva`), brand tokens, and Framer Motion / GSAP animations without breaking ARIA accessibility or keyboard navigation contracts.
+
+---
+
+## 5. Strict Quality & TypeScript Rules
 
 - **Zero `any` Policy:** Define strict TypeScript interfaces for all section props, services, and portfolio items in `src/types/index.ts`.
 - **Zero Unused Dependencies:** Never install extraneous state management libraries (Redux, Zustand) or backend ORMs for a static one-page showcase.

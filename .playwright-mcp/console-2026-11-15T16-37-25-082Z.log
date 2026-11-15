@@ -1,0 +1,2 @@
+[    1311ms] [ERROR] Framing 'https://www.openstreetmap.org/' violates the following Content Security Policy directive: "default-src 'self'". The request has been blocked. Note that 'frame-src' was not explicitly set, so 'default-src' is used as a fallback.
+ @ http://localhost:3000/:50

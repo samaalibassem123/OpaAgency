@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:verify": "node scripts/pre-push-verify.mjs",
+    "push:safe": "node scripts/safe-push.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

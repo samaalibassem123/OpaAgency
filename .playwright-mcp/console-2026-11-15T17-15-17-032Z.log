@@ -1,0 +1,9 @@
+[    1199ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://www.instagram.com/imprimerie.opa?mdxt=Y284N3l3MHprY2g2:1
+[    1577ms] [LOG] 
+%cStop ! font-family:helvetica; font-size:20px; font-size:50px; font-weight:bold; color:red; -webkit-text-stroke:1px black; @ https://static.cdninstagram.com/rsrc.php/v4i5BD4/yV/l/fr_FR/1Qb0ttCHQRl.js:9
+[    1577ms] [LOG] 
+%cIl s’agit d’une fonctionnalité de navigateur conçue pour les développeurs. Si quelqu’un vous a invité(e) à copier-coller quelque chose ici pour activer une fonctionnalité Instagram ou soi-disant pirater le compte d’un tiers, sachez que c’est une arnaque permettant à cette personne d’accéder à votre compte Instagram. font-family:helvetica; font-size:20px;  @ https://static.cdninstagram.com/rsrc.php/v4i5BD4/yV/l/fr_FR/1Qb0ttCHQRl.js:9
+[    1577ms] [LOG] 
+%cConsultez https://www.facebook.com/selfxss pour plus d’informations. font-family:helvetica; font-size:20px;  @ https://static.cdninstagram.com/rsrc.php/v4i5BD4/yV/l/fr_FR/1Qb0ttCHQRl.js:9
+[    1578ms] [LOG] 
+%c  @ https://static.cdninstagram.com/rsrc.php/v4i5BD4/yV/l/fr_FR/1Qb0ttCHQRl.js:9

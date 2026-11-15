@@ -218,6 +218,7 @@ Before writing code in specialized domains, always invoke and follow the project
 - `premium-frontend-design` — Editorial typography, asymmetric grids, and anti-template layouts.
 - `animation-engineering` — GSAP ScrollTrigger and Framer Motion performance patterns.
 - `nextjs-engineering` — App Router, Server Components, and Next.js optimization.
+- `git-push-with-tests` — Automated type-safe build verification, WebKit/mobile Playwright smoke testing, semantic staging, and safe GitHub push.
 
 ---
 

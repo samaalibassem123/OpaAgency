@@ -21,10 +21,11 @@ export function InitialLoader({ minDuration = 2200 }: InitialLoaderProps) {
     const mobile = window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     setIsMobile(mobile);
 
-    // Failsafe timeout so the loader always gracefully dismisses
+    // Failsafe timeout so the loader always gracefully dismisses (snappier on mobile)
+    const effectiveDuration = mobile ? Math.min(minDuration, 1400) : minDuration;
     const timer = setTimeout(() => {
       setAnimDone(true);
-    }, minDuration);
+    }, effectiveDuration);
 
     return () => clearTimeout(timer);
   }, [minDuration]);
@@ -76,7 +77,7 @@ export function InitialLoader({ minDuration = 2200 }: InitialLoaderProps) {
                 initial={{ scale: 0.85, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="w-40 h-40 flex items-center justify-center"
+                className="w-36 h-36 flex items-center justify-center [&_svg]:w-full [&_svg]:h-full"
                 dangerouslySetInnerHTML={{ __html: MARK_OPA_SVG }}
               />
             ) : (

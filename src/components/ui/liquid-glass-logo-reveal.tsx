@@ -226,13 +226,13 @@ function fitToTexture(source: CanvasImageSource, sw: number, sh: number) {
       }
     }
   }
+  const out = document.createElement("canvas")
+  out.width = out.height = TEX
   if (x1 < 0) return out
   const bw = x1 - x0 + 1
   const bh = y1 - y0 + 1
   const s = (TEX * BOX) / Math.max(bw, bh)
 
-  const out = document.createElement("canvas")
-  out.width = out.height = TEX
   const oc = out.getContext("2d", { willReadFrequently: true })!
   oc.imageSmoothingQuality = "high"
   oc.drawImage(source, TEX / 2 - (x0 + bw / 2 - dx0) * s, TEX / 2 - (y0 + bh / 2 - dy0) * s, sw * s0 * s, sh * s0 * s)

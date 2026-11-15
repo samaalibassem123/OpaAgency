@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { QuoteFormData } from "@/types";
 import {
@@ -20,19 +21,12 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 const SERVICE_OPTIONS = [
   { id: "Packaging & Boîtes Rigides", label: "Packaging & Boîtes", tag: "Luxe" },
@@ -51,11 +45,6 @@ const QUANTITY_OPTIONS = [
 ];
 
 export function Contact() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const leftColRef = useRef<HTMLDivElement>(null);
-  const rightColRef = useRef<HTMLDivElement>(null);
-
   const [formData, setFormData] = useState<QuoteFormData>({
     fullName: "",
     company: "",
@@ -68,51 +57,6 @@ export function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
-
-  useGSAP(
-    () => {
-      if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      gsap.from(headerRef.current, {
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      gsap.from(leftColRef.current, {
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: leftColRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-
-      gsap.from(rightColRef.current, {
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: rightColRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      });
-    },
-    { scope: containerRef }
-  );
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -152,12 +96,11 @@ export function Contact() {
 
   return (
     <section
-      ref={containerRef}
       id="contact"
       className="relative py-20 sm:py-28 lg:py-36 bg-slate-50/70 border-t border-slate-200/80 w-full max-w-full overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        <div ref={headerRef}>
+        <ScrollReveal direction="up" amount={0.15}>
           <SectionHeading
             kicker="Atelier & Devis Direct"
             title="Initiez Votre Projet"
@@ -165,15 +108,16 @@ export function Contact() {
             description="Que vous ayez un cahier des charges précis ou besoin d'un conseil d'ingénierie papetière, notre équipe technique vous répond sous 24h ouvrées."
             className="mb-12 lg:mb-16"
           />
-        </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* =========================================================================
               LEFT COLUMN: Direct Atelier Coordinates & Fast Pathways
              ========================================================================= */}
-          <div ref={leftColRef} className="lg:col-span-5 flex flex-col space-y-6">
-            {/* Priority Direct WhatsApp Card */}
-            <Card className="p-6 sm:p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-[0_12px_36px_-6px_rgba(15,23,42,0.06),inset_0_1px_1px_white] relative overflow-hidden">
+          <div className="lg:col-span-5">
+            <ScrollReveal direction="left" amount={0.15} className="flex flex-col space-y-6">
+              {/* Priority Direct WhatsApp Card */}
+              <Card className="p-6 sm:p-7 rounded-3xl bg-white/90 backdrop-blur-xl border border-slate-200/90 shadow-[0_12px_36px_-6px_rgba(15,23,42,0.06),inset_0_1px_1px_white] relative overflow-hidden">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11px] uppercase tracking-wider text-slate-500 font-bold">
                   Canal Prioritaire
@@ -298,12 +242,14 @@ export function Contact() {
                 </div>
               </div>
             </Card>
+            </ScrollReveal>
           </div>
 
           {/* =========================================================================
               RIGHT COLUMN: Editorial Interactive Quotation Configurator
              ========================================================================= */}
-          <div ref={rightColRef} className="lg:col-span-7">
+          <div className="lg:col-span-7">
+            <ScrollReveal direction="right" amount={0.15}>
             <Card className="p-6 sm:p-9 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-[0_20px_50px_-15px_rgba(15,23,42,0.06),inset_0_1px_1px_white] relative">
               {/* Form Header */}
               <div className="border-b border-slate-100 pb-5 mb-6">
@@ -532,6 +478,7 @@ export function Contact() {
                 </div>
               </form>
             </Card>
+            </ScrollReveal>
           </div>
         </div>
       </div>

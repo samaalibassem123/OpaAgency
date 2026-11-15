@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { servicesData } from "@/config/services";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { buildItemWhatsAppUrl } from "@/lib/whatsapp";
 import { ServiceItem } from "@/types";
 import {
@@ -51,59 +52,63 @@ export function Services() {
     <section id="services" className="relative py-20 sm:py-28 bg-white border-t border-slate-200/80 w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
-          <SectionHeading
-            kicker="Savoir-Faire & Ateliers • 01 — 06"
-            title="Six Domaines de Fabrication"
-            highlight="Haute Fidélité."
-            description="De la boîte rigide montée à la main aux tirages offset de grand volume, nous maîtrisons l'intégralité de la chaîne graphique dans nos ateliers à Tunis et Ariana."
-          />
+        <ScrollReveal direction="up" amount={0.15}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+            <SectionHeading
+              kicker="Savoir-Faire & Ateliers • 01 — 06"
+              title="Six Domaines de Fabrication"
+              highlight="Haute Fidélité."
+              description="De la boîte rigide montée à la main aux tirages offset de grand volume, nous maîtrisons l'intégralité de la chaîne graphique dans nos ateliers à Tunis et Ariana."
+            />
 
-          <div className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100/80 border border-slate-200 text-xs font-semibold text-slate-700 shrink-0">
-            <span className="w-2 h-2 rounded-full bg-[#2DB8D3]" />
-            <span className="w-2 h-2 rounded-full bg-[#D41A78]" />
-            <span className="w-2 h-2 rounded-full bg-[#F3C215]" />
-            <span className="ml-1 text-slate-900 font-bold">Manufacture Intégrée</span>
+            <div className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100/80 border border-slate-200 text-xs font-semibold text-slate-700 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-[#2DB8D3]" />
+              <span className="w-2 h-2 rounded-full bg-[#D41A78]" />
+              <span className="w-2 h-2 rounded-full bg-[#F3C215]" />
+              <span className="ml-1 text-slate-900 font-bold">Manufacture Intégrée</span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Editorial Domain Navigation Filter (Horizontal Scroll Rail on Mobile, Segmented Control on Desktop) */}
-        <div className="relative mb-10 -mx-6 sm:mx-0 px-6 sm:px-0">
-          <div className="overflow-x-auto no-scrollbar scroll-smooth">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="h-auto p-1.5 rounded-full bg-slate-100/90 border border-slate-200/90 inline-flex items-center gap-1.5 shadow-sm min-w-max">
-                <TabsTrigger
-                  value="all"
-                  className="rounded-full px-4 py-2 text-xs font-bold transition-all data-[state=active]:bg-slate-900 data-[state=active]:text-white data-[state=active]:shadow-sm flex items-center gap-1.5 shrink-0"
-                >
-                  <LayoutGrid className="w-3.5 h-3.5" />
-                  <span>Tous les Domaines (06)</span>
-                </TabsTrigger>
-                {servicesData.map((s) => (
+        <ScrollReveal direction="up" delay={0.08} amount={0.15}>
+          <div className="relative mb-10 -mx-6 sm:mx-0 px-6 sm:px-0">
+            <div className="overflow-x-auto no-scrollbar scroll-smooth">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="h-auto p-1.5 rounded-full bg-slate-100/90 border border-slate-200/90 inline-flex items-center gap-1.5 shadow-sm min-w-max">
                   <TabsTrigger
-                    key={s.id}
-                    value={s.id}
-                    className="rounded-full px-3.5 py-2 text-xs font-bold transition-all data-[state=active]:bg-slate-900 data-[state=active]:text-white data-[state=active]:shadow-sm shrink-0 whitespace-nowrap"
+                    value="all"
+                    className="rounded-full px-4 py-2 text-xs font-bold transition-all data-[state=active]:bg-slate-900 data-[state=active]:text-white data-[state=active]:shadow-sm flex items-center gap-1.5 shrink-0"
                   >
-                    <span className="opacity-60 mr-1">{s.number}</span>
-                    <span>{s.title.split("&")[0].trim()}</span>
+                    <LayoutGrid className="w-3.5 h-3.5" />
+                    <span>Tous les Domaines (06)</span>
                   </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
-          </div>
+                  {servicesData.map((s) => (
+                    <TabsTrigger
+                      key={s.id}
+                      value={s.id}
+                      className="rounded-full px-3.5 py-2 text-xs font-bold transition-all data-[state=active]:bg-slate-900 data-[state=active]:text-white data-[state=active]:shadow-sm shrink-0 whitespace-nowrap"
+                    >
+                      <span className="opacity-60 mr-1">{s.number}</span>
+                      <span>{s.title.split("&")[0].trim()}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </Tabs>
+            </div>
 
-          {/* Mobile Swipe Hint Bar */}
-          <div className="sm:hidden flex items-center justify-between mt-3 px-1 text-[11px] text-slate-500 font-medium">
-            <span className="flex items-center gap-1.5">
-              <SlidersHorizontal className="w-3 h-3 text-[#D41A78]" />
-              <span>{activeTab === "all" ? "Affichage : Grille Complète (06)" : `Filtre actif : ${selectedService?.title.split("&")[0].trim()}`}</span>
-            </span>
-            <span className="text-[10px] uppercase tracking-wider text-slate-400">
-              Faire défiler &rarr;
-            </span>
+            {/* Mobile Swipe Hint Bar */}
+            <div className="sm:hidden flex items-center justify-between mt-3 px-1 text-[11px] text-slate-500 font-medium">
+              <span className="flex items-center gap-1.5">
+                <SlidersHorizontal className="w-3 h-3 text-[#D41A78]" />
+                <span>{activeTab === "all" ? "Affichage : Grille Complète (06)" : `Filtre actif : ${selectedService?.title.split("&")[0].trim()}`}</span>
+              </span>
+              <span className="text-[10px] uppercase tracking-wider text-slate-400">
+                Faire défiler &rarr;
+              </span>
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* =========================================================================
             ANIMATED DOMAIN VIEWS (Managed via Framer Motion AnimatePresence)
@@ -123,18 +128,17 @@ export function Services() {
                 return (
                   <motion.div
                     key={service.id}
-                    initial={{ opacity: 0, y: 20, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    initial={{ opacity: 0, y: 28, scale: 0.97 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: false, amount: 0.12 }}
                     exit={{ opacity: 0, y: -12, scale: 0.98 }}
                     transition={{
-                      type: "spring",
-                      stiffness: 360,
-                      damping: 28,
-                      mass: 0.65,
-                      delay: index * 0.04,
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1],
+                      delay: (index % 3) * 0.08,
                     }}
                     whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
-                    className="h-full"
+                    className="h-full will-change-transform"
                   >
                     <Card className="group relative rounded-3xl p-5 sm:p-6 bg-white/90 backdrop-blur-md backdrop-saturate-150 border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(15,23,42,0.1)] hover:border-slate-300 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full">
                       {/* Image Showcase */}
@@ -246,16 +250,15 @@ export function Services() {
             selectedService && (
               <motion.div
                 key={`spotlight-${selectedService.id}`}
-                initial={{ opacity: 0, y: 22, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 28, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.15 }}
                 exit={{ opacity: 0, y: -16, scale: 0.98 }}
                 transition={{
-                  type: "spring",
-                  stiffness: 380,
-                  damping: 30,
-                  mass: 0.7,
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
-                className="rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-xl p-6 sm:p-10 shadow-[0_12px_40px_rgb(0,0,0,0.06)]"
+                className="rounded-3xl border border-slate-200/90 bg-white/95 backdrop-blur-xl p-6 sm:p-10 shadow-[0_12px_40px_rgb(0,0,0,0.06)] will-change-transform"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   {/* Visual Frame */}

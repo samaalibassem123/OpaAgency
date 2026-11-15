@@ -1,110 +1,89 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { portfolioCategories, portfolioItems } from "@/config/portfolio";
 import { PortfolioItem } from "@/types";
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { buildItemWhatsAppUrl } from "@/lib/whatsapp";
 import { ArrowUpRight, MessageCircle, X, Sparkles, Layers, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card } from "@/components/ui/card";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger, useGSAP);
-}
 
 export function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
 
   const filteredItems =
     activeCategory === "all"
       ? portfolioItems
       : portfolioItems.filter((item) => item.category === activeCategory);
 
-  useGSAP(
-    () => {
-      if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return;
-      }
-
-      gsap.from(headerRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: "top 92%",
-          once: true,
-        },
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <section ref={containerRef} id="portfolio" className="relative py-24 sm:py-32 lg:py-40 bg-slate-50/70 border-t border-slate-200/80 w-full max-w-full overflow-hidden">
+    <section id="portfolio" className="relative py-24 sm:py-32 lg:py-40 bg-slate-50/70 border-t border-slate-200/80 w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Heading & Category Filters */}
-        <div ref={headerRef} className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-          <SectionHeading
-            kicker="Galerie de Réalisations • Portfolio"
-            title="Des Pièces d'Exception,"
-            highlight="Façonnées à la Main."
-            description="Explorez notre sélection de coffrets, finitions en dorure et supports corporate réalisés pour les marques les plus exigeantes."
-          />
+        <ScrollReveal direction="up" amount={0.15}>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+            <SectionHeading
+              kicker="Galerie de Réalisations • Portfolio"
+              title="Des Pièces d'Exception,"
+              highlight="Façonnées à la Main."
+              description="Explorez notre sélection de coffrets, finitions en dorure et supports corporate réalisés pour les marques les plus exigeantes."
+            />
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
-            {portfolioCategories.map((category) => {
-              const isActive = activeCategory === category.id;
-              return (
-                <button
-                  key={category.id}
-                  type="button"
-                  onClick={() => setActiveCategory(category.id)}
-                  className={cn(
-                    "relative px-4 py-2 rounded-full text-xs font-semibold transition-colors duration-200 shadow-sm",
-                    isActive
-                      ? "text-white"
-                      : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300"
-                  )}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="active-portfolio-filter"
-                      className="absolute inset-0 rounded-full bg-slate-900 shadow-md"
-                      transition={{ type: "spring", stiffness: 450, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{category.label}</span>
-                </button>
-              );
-            })}
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2">
+              {portfolioCategories.map((category) => {
+                const isActive = activeCategory === category.id;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    onClick={() => setActiveCategory(category.id)}
+                    className={cn(
+                      "relative px-4 py-2 rounded-full text-xs font-semibold transition-colors duration-200 shadow-sm",
+                      isActive
+                        ? "text-white"
+                        : "bg-white text-slate-700 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300"
+                    )}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-portfolio-filter"
+                        className="absolute inset-0 rounded-full bg-slate-900 shadow-md"
+                        transition={{ type: "spring", stiffness: 450, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{category.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Fluid Layout Grid with Framer Motion AnimatePresence */}
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <motion.div
                 layout
                 key={item.id}
-                initial={{ opacity: 0, scale: 0.94 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 28, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.12 }}
                 exit={{ opacity: 0, scale: 0.94 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: (index % 3) * 0.08,
+                }}
                 whileHover={{ y: -6 }}
                 onClick={() => setSelectedItem(item)}
+                className="will-change-transform"
               >
                 <Card
                   className={cn(

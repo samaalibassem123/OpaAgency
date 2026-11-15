@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlassRevealOpa } from "@/components/ui/liquid-glass-logo-reveal";
+import { GlassRevealOpa, MARK_OPA_SVG } from "@/components/ui/liquid-glass-logo-reveal";
+import { OpaLogo } from "@/components/ui/opa-logo";
 
 interface InitialLoaderProps {
   /** Minimum time to show the loader in milliseconds (defaults to 2200ms) */
@@ -12,8 +13,14 @@ interface InitialLoaderProps {
 export function InitialLoader({ minDuration = 2200 }: InitialLoaderProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [animDone, setAnimDone] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    const mobile = window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    setIsMobile(mobile);
+
     // Failsafe timeout so the loader always gracefully dismisses
     const timer = setTimeout(() => {
       setAnimDone(true);
@@ -62,13 +69,23 @@ export function InitialLoader({ minDuration = 2200 }: InitialLoaderProps) {
           }}
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-white select-none"
         >
-          {/* Liquid Glass Canvas Presentation */}
-          <div className="w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] relative flex items-center justify-center">
-            <GlassRevealOpa
-              loop={false}
-              onComplete={handleComplete}
-              className="w-full h-full"
-            />
+          {/* Logo Presentation: High-Performance Vector Emblem on SSR & Mobile, WebGL on Desktop */}
+          <div className="w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] relative flex items-center justify-center">
+            {!mounted || isMobile ? (
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-40 h-40 flex items-center justify-center"
+                dangerouslySetInnerHTML={{ __html: MARK_OPA_SVG }}
+              />
+            ) : (
+              <GlassRevealOpa
+                loop={false}
+                onComplete={handleComplete}
+                className="w-full h-full"
+              />
+            )}
           </div>
 
           {/* Subtitle & CMYK Branding Accents */}

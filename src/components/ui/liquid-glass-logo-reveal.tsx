@@ -167,18 +167,22 @@ function isMarkup(logo: string) {
 // SVG markup → data URL rendered at texture size; currentColor turns white (only the shape matters).
 function svgToUrl(text: string) {
   if (typeof DOMParser === "undefined") return ""
-  const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement
-  if (!svg || svg.nodeName.toLowerCase() !== "svg") throw new Error("GlassIconReveal: the SVG could not be read")
-  let w = parseFloat(svg.getAttribute("width") || "")
-  let h = parseFloat(svg.getAttribute("height") || "")
-  const vb = (svg.getAttribute("viewBox") || "").split(/[\s,]+/).map(Number)
-  if (vb.length === 4 && vb[2] > 0 && vb[3] > 0) [w, h] = [vb[2], vb[3]]
-  if (!(w > 0 && h > 0)) w = h = 100
-  const s = TEX / Math.max(w, h)
-  svg.setAttribute("width", String(Math.round(w * s)))
-  svg.setAttribute("height", String(Math.round(h * s)))
-  const out = new XMLSerializer().serializeToString(svg).replace(/currentColor/g, "#ffffff")
-  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(out)
+  try {
+    const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement
+    if (!svg || svg.nodeName.toLowerCase() !== "svg") return ""
+    let w = parseFloat(svg.getAttribute("width") || "")
+    let h = parseFloat(svg.getAttribute("height") || "")
+    const vb = (svg.getAttribute("viewBox") || "").split(/[\s,]+/).map(Number)
+    if (vb.length === 4 && vb[2] > 0 && vb[3] > 0) [w, h] = [vb[2], vb[3]]
+    if (!(w > 0 && h > 0)) w = h = 100
+    const s = TEX / Math.max(w, h)
+    svg.setAttribute("width", String(Math.round(w * s)))
+    svg.setAttribute("height", String(Math.round(h * s)))
+    const out = new XMLSerializer().serializeToString(svg).replace(/currentColor/g, "#ffffff")
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(out)
+  } catch {
+    return ""
+  }
 }
 
 const logoUrl = (logo: string) => (isMarkup(logo) ? svgToUrl(logo) : logo)
@@ -222,7 +226,7 @@ function fitToTexture(source: CanvasImageSource, sw: number, sh: number) {
       }
     }
   }
-  if (x1 < 0) throw new Error("GlassIconReveal: the logo is empty")
+  if (x1 < 0) return out
   const bw = x1 - x0 + 1
   const bh = y1 - y0 + 1
   const s = (TEX * BOX) / Math.max(bw, bh)
@@ -599,17 +603,26 @@ function createRenderer(canvas: HTMLCanvasElement) {
   const gl = canvas.getContext("webgl2", { antialias: false, premultipliedAlpha: false })
   if (!gl) return null
   const compile = (type: number, src: string) => {
-    const sh = gl.createShader(type)!
+    const sh = gl.createShader(type)
+    if (!sh) return null
     gl.shaderSource(sh, src)
     gl.compileShader(sh)
-    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh) || "shader")
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) {
+      return null
+    }
     return sh
   }
-  const prog = gl.createProgram()!
-  gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT))
-  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG))
+  const prog = gl.createProgram()
+  if (!prog) return null
+  const vs = compile(gl.VERTEX_SHADER, VERT)
+  const fs = compile(gl.FRAGMENT_SHADER, FRAG)
+  if (!vs || !fs) return null
+  gl.attachShader(prog, vs)
+  gl.attachShader(prog, fs)
   gl.linkProgram(prog)
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog) || "program")
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    return null
+  }
   gl.useProgram(prog)
 
   gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
@@ -911,9 +924,13 @@ export function GlassIconReveal({
     loadLogo(logo).then(
       (data) => {
         if (cancelled) return
-        engineRef.current?.setLogo(data)
+        try {
+          if (data) engineRef.current?.setLogo(data)
+        } catch (err) {
+          console.warn("Logo texture error:", err)
+        }
       },
-      (err) => console.error(err),
+      (err) => console.warn(err),
     )
     return () => {
       cancelled = true
@@ -1036,7 +1053,12 @@ function startEngine(
         canvas.height = h
       }
       const tile = Math.min(P.tileSize, Math.min(cw, ch) / 1.75)
-      renderer.render(frameAt(Math.min(time, end), P, outro), w, h, tile * dpr)
+      try {
+        renderer.render(frameAt(Math.min(time, end), P, outro), w, h, tile * dpr)
+      } catch (e) {
+        console.warn("Render frame error:", e)
+        lost = true
+      }
       dirty = false
     }
     if (visible && playing && logo && !lost) raf = requestAnimationFrame(tick)

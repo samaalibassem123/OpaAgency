@@ -79,10 +79,10 @@ interface TunnelCardProps {
 }
 
 function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) {
-  // Stagger calculation: each card enters sequentially across the first 30% of scroll
-  const entryStart = (card.index / total) * 0.30;
-  const entryEnd = entryStart + 0.22;
-  const exitStart = 0.82;
+  // Stagger calculation: strictly monotonically ascending ranges (never duplicate 0 values for card 0)
+  const entryStart = Math.max(0.015, (card.index / total) * 0.25 + 0.015);
+  const entryEnd = entryStart + 0.18;
+  const exitStart = 0.84;
   const exitEnd = 1.0;
 
   const farZ = stage.isMobile ? -850 : -1200;
@@ -106,7 +106,7 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
   // Opacity: starts visible, ramps to 100% solid, STICKS at 1 through the main scroll sequence!
   const opacity = useTransform(
     progress,
-    [0, entryStart, Math.min(entryEnd * 0.9, 0.75), exitStart, exitEnd],
+    [0, entryStart, entryEnd, exitStart, exitEnd],
     [
       0.72, // Elegant rest visibility at page top
       0.88, // Gliding in
@@ -134,12 +134,14 @@ function TunnelCard({ card, progress, pointer, total, stage }: TunnelCardProps) 
   const transform = useTransform(
     [z, pointer.x, pointer.y],
     (values: number[]) => {
-      const currZ = values[0];
-      const px = values[1];
-      const py = values[2];
+      const currZ = typeof values[0] === "number" && !isNaN(values[0]) ? values[0] : 0;
+      const px = typeof values[1] === "number" && !isNaN(values[1]) ? values[1] : 0;
+      const py = typeof values[2] === "number" && !isNaN(values[2]) ? values[2] : 0;
       const offsetX = baseX - px * panStrength;
       const offsetY = baseY - py * panStrength;
-      return `translate3d(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px), ${currZ}px) rotateZ(${card.rotationZ}deg)`;
+      const safeOffsetX = isNaN(offsetX) ? 0 : offsetX;
+      const safeOffsetY = isNaN(offsetY) ? 0 : offsetY;
+      return `translate3d(calc(-50% + ${safeOffsetX.toFixed(1)}px), calc(-50% + ${safeOffsetY.toFixed(1)}px), ${currZ.toFixed(1)}px) rotateZ(${card.rotationZ}deg)`;
     }
   );
 

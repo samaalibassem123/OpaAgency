@@ -223,38 +223,48 @@ function makeState() {
 }
 
 function initGL(canvas: HTMLCanvasElement) {
-  const gl = canvas.getContext("webgl", { premultipliedAlpha: true, alpha: true, antialias: false }) as WebGLRenderingContext | null;
-  if (!gl) return null;
-  const sh = (type: number, src: string) => {
-    const s = gl.createShader(type)!;
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
-  };
-  const vs = sh(gl.VERTEX_SHADER, VERT);
-  const fs = sh(gl.FRAGMENT_SHADER, FRAG);
-  if (!vs || !fs) return null;
-  const p = gl.createProgram()!;
-  gl.attachShader(p, vs);
-  gl.attachShader(p, fs);
-  gl.linkProgram(p);
-  if (!gl.getProgramParameter(p, gl.LINK_STATUS)) return null;
-  gl.useProgram(p);
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const loc = gl.getAttribLocation(p, "a");
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  const u: Record<string, WebGLUniformLocation | null> = {};
-  for (const n of ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb"]) u[n] = gl.getUniformLocation(p, n);
-  return { gl, u };
+  try {
+    const gl = canvas.getContext("webgl", { premultipliedAlpha: true, alpha: true, antialias: false }) as WebGLRenderingContext | null;
+    if (!gl) return null;
+    const sh = (type: number, src: string) => {
+      const s = gl.createShader(type);
+      if (!s) return null;
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+    };
+    const vs = sh(gl.VERTEX_SHADER, VERT);
+    const fs = sh(gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return null;
+    const p = gl.createProgram();
+    if (!p) return null;
+    gl.attachShader(p, vs);
+    gl.attachShader(p, fs);
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) return null;
+    gl.useProgram(p);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(p, "a");
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const u: Record<string, WebGLUniformLocation | null> = {};
+    for (const n of ["uRes", "uDpr", "uTime", "uPill", "uBlob", "uSy", "uRip", "uMouse", "uDark", "uAmb"]) u[n] = gl.getUniformLocation(p, n);
+    return { gl, u };
+  } catch {
+    return null;
+  }
 }
 
 function supportsRefraction() {
-  if (typeof window === "undefined" || typeof CSS === "undefined") return false;
-  const ua = navigator.userAgent;
-  return /Chrome\/|Chromium\/|Edg\//.test(ua) && !/Firefox\//.test(ua) && !!(CSS as any).supports?.("backdrop-filter", "url(#a)");
+  if (typeof window === "undefined" || typeof CSS === "undefined" || !navigator) return false;
+  try {
+    const ua = navigator.userAgent;
+    return /Chrome\/|Chromium\/|Edg\//.test(ua) && !/Firefox\//.test(ua) && !!(CSS as any).supports?.("backdrop-filter", "url(#a)");
+  } catch {
+    return false;
+  }
 }
 
 export function LiquidNavbar({
@@ -451,6 +461,7 @@ export function LiquidNavbar({
     const s = st.current;
     s.w = nav.offsetWidth;
     s.h = nav.offsetHeight;
+    if (s.w === 0 || s.h === 0) return;
     const T = s.t;
     T.r = el.offsetHeight / 2;
     T.q = Math.max(0, el.offsetWidth / 2 - T.r);
@@ -540,7 +551,8 @@ export function LiquidNavbar({
 
   /* ---- interaction ---- */
   const local = (clientX: number, clientY: number) => {
-    const r = navRef.current!.getBoundingClientRect();
+    if (!navRef.current) return { x: 0, y: 0 };
+    const r = navRef.current.getBoundingClientRect();
     return { x: clientX - r.left + PAD, y: clientY - r.top + PAD };
   };
 

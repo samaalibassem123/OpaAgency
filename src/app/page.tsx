@@ -6,7 +6,7 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
+import { Organigramme } from "@/components/sections/Organigramme";
 import { Contact } from "@/components/sections/Contact";
 
 export default function HomePage() {
@@ -24,7 +24,7 @@ export default function HomePage() {
         <About />
         <Services />
         <Portfolio />
-        <WhyChooseUs />
+        <Organigramme />
         <Contact />
       </main>
 

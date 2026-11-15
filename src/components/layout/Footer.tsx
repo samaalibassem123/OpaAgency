@@ -96,6 +96,17 @@ export function Footer() {
             </span>
             <div className="flex flex-col space-y-4 text-xs text-slate-600">
               <div className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#F3C215] shrink-0 mt-0.5" />
+                <div>
+                  <span className="text-slate-900 font-bold block">
+                    {siteConfig.locations.studio.label}
+                  </span>
+                  <span>{siteConfig.locations.studio.address}</span>
+                  <span className="text-slate-500 block">{siteConfig.locations.studio.city}</span>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#D41A78] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-slate-900 font-bold block">

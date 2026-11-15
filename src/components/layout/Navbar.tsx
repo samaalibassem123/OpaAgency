@@ -6,18 +6,74 @@ import { siteConfig } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { MessageCircle, Menu, X, ArrowUpRight, Phone, MapPin, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { OpaLogo } from "@/components/ui/opa-logo";
 import {
-  LiquidGlassNavBar,
+  LiquidNavbar,
   DEFAULT_NAV_ITEMS,
   LiquidNavItem,
 } from "@/components/ui/liquid-glass-navbar";
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("accueil");
+
+  const { scrollY } = useScroll();
+
+  // 1. Framer Motion Scroll Listener (Ultra-responsive touch & wheel tracking)
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (mobileMenuOpen) return;
+    const previous = scrollY.getPrevious() ?? 0;
+    const diff = latest - previous;
+
+    // At top of page, always show header
+    if (latest <= 60) {
+      setIsVisible(true);
+      return;
+    }
+
+    // Significant scroll threshold to prevent micro-jitter
+    if (Math.abs(diff) > 8) {
+      if (diff > 0 && latest > 120) {
+        // Scrolling DOWN -> Disappear smoothly
+        setIsVisible(false);
+      } else if (diff < 0) {
+        // Scrolling UP -> Pop in with spring
+        setIsVisible(true);
+      }
+    }
+  });
+
+  // 2. GSAP ScrollTrigger (Lenis RAF synchronized direction & velocity tracking)
+  useGSAP(() => {
+    const trigger = ScrollTrigger.create({
+      start: 0,
+      end: "max",
+      onUpdate: (self) => {
+        if (mobileMenuOpen) return;
+        const currentScroll = self.scroll();
+
+        if (currentScroll <= 60) {
+          setIsVisible(true);
+        } else if (self.direction === 1 && currentScroll > 120) {
+          setIsVisible(false);
+        } else if (self.direction === -1) {
+          setIsVisible(true);
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +88,7 @@ export function Navbar() {
 
       const sections = [
         { id: "contact", el: document.getElementById("contact") },
-        { id: "pourquoi-opa", el: document.getElementById("pourquoi-opa") },
+        { id: "organigramme", el: document.getElementById("organigramme") },
         { id: "portfolio", el: document.getElementById("portfolio") },
         { id: "services", el: document.getElementById("services") },
         { id: "about", el: document.getElementById("about") },
@@ -66,10 +122,10 @@ export function Navbar() {
   const defaultWhatsAppLink = buildWhatsAppUrl();
 
   const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, item: LiquidNavItem) => {
-    setActiveSection(item.id);
+    if (item.id) setActiveSection(item.id);
     setMobileMenuOpen(false);
 
-    if (item.href.startsWith("#")) {
+    if (item.href?.startsWith("#")) {
       e.preventDefault();
       if (item.href === "#" || item.href === "#top" || item.href === "#hero") {
         if (typeof window !== "undefined" && window.__lenis) {
@@ -98,11 +154,34 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-3 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl transition-all duration-300",
-          isScrolled ? "scale-[0.99]" : "scale-100"
-        )}
+      <motion.header
+        initial="visible"
+        animate={isVisible ? "visible" : "hidden"}
+        variants={{
+          visible: {
+            y: 0,
+            x: "-50%",
+            opacity: 1,
+            scale: isScrolled ? 0.99 : 1,
+            transition: {
+              type: "spring",
+              stiffness: 420,
+              damping: 30,
+              mass: 0.8,
+            },
+          },
+          hidden: {
+            y: "-150%",
+            x: "-50%",
+            opacity: 0,
+            scale: 0.96,
+            transition: {
+              duration: 0.28,
+              ease: [0.16, 1, 0.3, 1],
+            },
+          },
+        }}
+        className="fixed top-3 sm:top-5 left-1/2 z-50 w-[95%] max-w-6xl pointer-events-auto"
       >
         <div
           className={cn(
@@ -121,13 +200,13 @@ export function Navbar() {
             <OpaLogo variant="light" width={135} height={40} priority />
           </Link>
 
-          {/* Full-Height Liquid Glass Navigation Holder (Desktop) */}
-          <div className="hidden lg:flex items-center justify-center h-full py-2">
-            <LiquidGlassNavBar
+          {/* Full-Height Nimbus Waterline Liquid Glass Navbar (Desktop) */}
+          <div className="hidden lg:flex items-center justify-center h-full py-1">
+            <LiquidNavbar
               items={DEFAULT_NAV_ITEMS}
               activeId={activeSection}
-              onItemSelect={(item) => setActiveSection(item.id)}
-              className="h-full"
+              sound={true}
+              tone="light"
             />
           </div>
 
@@ -171,7 +250,7 @@ export function Navbar() {
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Drawer Overlay with Pure Liquid Glass Aesthetics */}
       <AnimatePresence>
@@ -234,18 +313,16 @@ export function Navbar() {
                         href={item.href}
                         onClick={(e) => handleMobileNavClick(e, item)}
                         className={cn(
-                          "relative flex items-center justify-between p-4 rounded-2xl transition-all duration-200",
+                          "relative flex items-center justify-between p-3.5 sm:p-4 rounded-2xl transition-all duration-200",
                           isActive
-                            ? "bg-white/80 backdrop-blur-sm border border-white shadow-[0_4px_16px_-2px_rgba(15,23,42,0.05),inset_0_1.5px_1px_white]"
+                            ? "bg-white/85 backdrop-blur-sm border border-white shadow-[0_4px_16px_-2px_rgba(15,23,42,0.06),inset_0_1.5px_1px_white]"
                             : "bg-white/40 hover:bg-white/65 backdrop-blur-sm border border-white/60 hover:border-white shadow-[0_1px_4px_rgba(0,0,0,0.02),inset_0_1px_1px_rgba(255,255,255,0.9)]"
                         )}
                       >
                         <span
                           className={cn(
-                            "text-[15px] font-display tracking-tight transition-colors",
-                            isActive
-                              ? "text-slate-950 font-bold"
-                              : "text-slate-700 font-medium"
+                            "text-[15px] font-sans tracking-tight transition-colors",
+                            isActive ? "text-slate-950 font-bold" : "text-slate-700 font-semibold"
                           )}
                         >
                           {item.label}

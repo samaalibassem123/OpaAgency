@@ -8,11 +8,18 @@
 **Company Name:** IMPRIMERIE OPA (*Our Print Agency*)  
 **Sector:** Commercial Printing, Luxury Packaging, Visual Communication & Advertising  
 **Geographic Footprint:** Greater Tunis & Ariana, Tunisia  
-**Key Management / Founder:** M. Marouane Ben Younes  
+**Key Management / Leadership:**
+- **M. Marwen Ben Younes:** Directeur Général & Fondateur
+- **Mme Mariem Ben Romdhane:** Direction Administrative & Financière
+- **M. Aziz Derbeli:** Infographie & Design Graphique
 **Primary Facilities & Addresses:**
-- **Atelier / Production & Agency:** Local L14, Résidence Marwa, Cité El Mostakbel, Rue Jbal Echaanbi, Ariana Médina, 2080 Tunis, Tunisia
+- **Studio Graphique & Conception:** 10 rue Mohamed Ben Ammar Ouertani, Menzah 6, Ariana Médina, 2080 Tunis, Tunisia
+- **Atelier / Production & Manufacture:** Local L14, Résidence Marwa, Cité El Mostakbel, Rue Jbal Echaanbi, Ariana Médina, 2080 Tunis, Tunisia
 - **Commercial Office:** 15 Rue de la Commission, 1002 Tunis, Tunisia  
 **Verified Contact Line & WhatsApp Business:** `+216 21 808 818`  
+**Official Email:** `our.print.agency@gmail.com`  
+**Internal Agile Methodology:** "Méthode Stand Up" (synchronisation hebdomadaire fin de semaine) et cycle de fabrication certifié en 8 étapes.  
+**Specialized Production Equipment:** Table de découpe à plat Vulcan (48 × 66 cm), DTF textile, traceur découpe vinyle, presses numériques & façonnage d'art.  
 **Official Digital Channels:**
 - Instagram: [`@imprimerie.opa`](https://www.instagram.com/imprimerie.opa?mdxt=Y284N3l3MHprY2g2)
 - Facebook: `Imprimerie OPA (Our Print Agency)`

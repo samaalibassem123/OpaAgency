@@ -48,7 +48,7 @@ export function Services() {
   const selectedService = servicesData.find((s) => s.id === activeTab);
 
   return (
-    <section id="services" className="relative py-20 sm:py-28 bg-white w-full max-w-full overflow-hidden">
+    <section id="services" className="relative py-20 sm:py-28 bg-white border-t border-slate-200/80 w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">

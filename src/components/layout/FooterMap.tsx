@@ -17,6 +17,7 @@ import {
   Compass,
   Clock,
   Phone,
+  Palette,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -90,6 +91,30 @@ const LOCATIONS: Record<string, LocationData> = {
       "https://waze.com/ul?q=15+Rue+de+la+Commission+Tunis",
     coordinates: "36.7978° N, 10.1753° E",
   },
+  studio: {
+    id: "studio",
+    name: "Studio Graphique & Ingénierie Packaging",
+    subtitle: "Briefing créatif, conception de dielines packaging, épreuvage BAT & shooting packshot photo",
+    badge: "Studio de Création & Dielines",
+    badgeColor: "border-[#F3C215]/40 bg-[#F3C215]/15 text-[#9E7300]",
+    addressLine1: "10 rue Mohamed Ben Ammar Ouertani",
+    addressLine2: "Près du Lycée Menzah 6 & Avenue Othman Chraibi",
+    city: "Menzah 6, Ariana Médina, 2080 Tunis",
+    country: "Tunisie",
+    logistics: "Stationnement facile, idéal pour réunions de conception design & validation de prototypes.",
+    hours: "Lun - Ven : 09h00 – 18h00 | Sam : 09h00 – 13h00",
+    phone: "21621808818",
+    phoneDisplay: "+216 21 808 818",
+    mapEmbedUrl:
+      "https://www.openstreetmap.org/export/embed.html?bbox=10.1550%2C36.8300%2C10.1750%2C36.8450&layer=mapnik&marker=36.8375%2C10.1650",
+    googleMapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=10+rue+Mohamed+Ben+Ammar+Ouertani+Menzah+6+Tunis",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=10+rue+Mohamed+Ben+Ammar+Ouertani+Menzah+6+Tunis",
+    wazeUrl:
+      "https://waze.com/ul?q=10+rue+Mohamed+Ben+Ammar+Ouertani+Menzah+6+Tunis",
+    coordinates: "36.8375° N, 10.1650° E",
+  },
 };
 
 export function FooterMap() {
@@ -115,7 +140,7 @@ export function FooterMap() {
             Où Trouver l&apos;Atelier OPA Imprimerie ?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
-            Retrouvez nos deux implantations dans le Grand Tunis. Visualisez la carte exacte et lancez votre itinéraire GPS en un clic.
+            Retrouvez nos trois implantations dans le Grand Tunis. Visualisez la carte exacte et lancez votre itinéraire GPS en un clic.
           </p>
         </div>
       </div>
@@ -132,6 +157,17 @@ export function FooterMap() {
               <span>Atelier de Production (Ariana)</span>
               <Badge variant="secondary" className="hidden sm:inline-flex text-[10px] py-0 px-1.5 ml-1 bg-[#2DB8D3]/10 text-[#2DB8D3] border border-[#2DB8D3]/20">
                 Principal
+              </Badge>
+            </TabsTrigger>
+
+            <TabsTrigger
+              value="studio"
+              className="rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold flex items-center gap-2 transition-all data-[state=active]:bg-white data-[state=active]:text-slate-900 data-[state=active]:shadow-[0_2px_10px_rgba(0,0,0,0.06)]"
+            >
+              <Palette className="w-4 h-4 text-[#F3C215]" />
+              <span>Studio Graphique (Menzah 6)</span>
+              <Badge variant="secondary" className="hidden sm:inline-flex text-[10px] py-0 px-1.5 ml-1 bg-[#F3C215]/20 text-[#855B00] border border-[#F3C215]/30">
+                Création
               </Badge>
             </TabsTrigger>
 
@@ -157,7 +193,16 @@ export function FooterMap() {
           />
         </TabsContent>
 
-        {/* Location 2: Commercial Office (Tunis Centre) */}
+        {/* Location 2: Creative Studio (Menzah 6) */}
+        <TabsContent value="studio" className="mt-0">
+          <LocationCard
+            location={LOCATIONS.studio}
+            isCopied={copiedLocation === "studio"}
+            onCopy={() => handleCopyAddress(LOCATIONS.studio)}
+          />
+        </TabsContent>
+
+        {/* Location 3: Commercial Office (Tunis Centre) */}
         <TabsContent value="commercial" className="mt-0">
           <LocationCard
             location={LOCATIONS.commercial}

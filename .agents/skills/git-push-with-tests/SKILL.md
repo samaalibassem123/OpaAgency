@@ -16,22 +16,26 @@ It ensures that broken builds, hydration mismatches, iOS WebKit runtime errors, 
 
 ## 1. When to Activate This Skill
 
-Activate this skill immediately whenever:
-- The user requests: *"push to github"*, *"push my changes"*, *"commit and push"*, *"push with testing"*, or *"deploy"*.
-- A feature, bug fix, or visual update is completed and ready to be delivered to `origin/master`.
-- Before closing a task that requires remote synchronization.
+> [!CAUTION]
+> **MANDATORY HUMAN APPROVAL RULE:**
+> This skill must **ONLY** perform a remote push (`git push`) when the user **explicitly commands** a push. Never push to GitHub autonomously or implicitly after finishing a task or seeing tests pass.
+
+Activate this skill:
+- When the user explicitly requests: *"push to github"*, *"push my changes"*, *"commit and push"*, *"push with testing"*, or *"deploy"*.
+- For local verification only (`npm run test:verify`), you may run tests locally at any time without pushing.
 
 ---
 
-## 2. The 4-Phase Safe Push Protocol
+## 2. The Safe Verification & Push Protocol
 
 ```mermaid
 flowchart TD
     A["1. Git Status Audit"] --> B["2. Automated Verification Gate"]
     B -->|Build or Tests Fail| C["ABORT: Fix Errors Locally"]
     B -->|All Tests Pass| D["3. Semantic Staging & Commit"]
-    D --> E["4. Push to origin/master"]
-    E --> F["5. Deployment Confirmation"]
+    D --> E["4. AWAIT USER APPROVAL & COMMAND"]
+    E -->|User confirms push| F["5. Push to origin/master"]
+    E -->|User wants changes/review| G["Stay Local"]
 ```
 
 ---

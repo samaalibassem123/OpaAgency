@@ -229,3 +229,15 @@ All architectural decisions, design token modifications, and verified company cr
 - `docs/DESIGN_SYSTEM.md`
 - `docs/PROJECT_ARCHITECTURE.md`
 - `docs/MCP_SETUP.md`
+
+---
+
+## 18. Strict Git & Deployment Safety Invariant (Human-in-the-Loop)
+
+> [!CAUTION]
+> **ABSOLUTE RULE — ZERO AUTONOMOUS PUSH:**
+> AI agents are **strictly forbidden** from running `git push` (or automated push scripts) autonomously or automatically upon completing a code edit, feature, or test.
+
+1. **Local-Only by Default:** All code edits, Next.js builds, and test runs must remain strictly local on your branch for the user to review, inspect, and test.
+2. **Explicit User Approval Required:** The agent may ONLY execute `git push` (or `npm run push:safe`) if and only if the user explicitly gives a direct, unambiguous command to push (e.g., *"push to github"*, *"push now"*, *"I verified everything, push changes"*).
+3. **No Implicit Chaining:** Completing a task or observing passing tests does NOT grant permission to push to remote. Always stop after local verification, inform the user of local results, and await direct instruction before pushing.

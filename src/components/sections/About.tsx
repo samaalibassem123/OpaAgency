@@ -122,22 +122,43 @@ export function About() {
 
         {/* Editorial Two-Column Visual & Narrative Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          {/* Left Column: Clean Visual Composition */}
+          {/* Left Column: Clean Visual Composition with Official OPA Logo */}
           <div ref={visualRef} className="lg:col-span-6">
-            <Card className="relative rounded-2xl overflow-hidden p-2.5 bg-white/75 backdrop-blur-md backdrop-saturate-150 border border-slate-200/80 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.08),inset_0_1px_1px_rgba(255,255,255,0.95)]">
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-100">
-                <Image
-                  src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&q=85&w=1200"
-                  alt="Détail de façonnage artisanal et dorure par OPA Imprimerie"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  className="object-cover object-center filter contrast-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-75" />
+            <Card className="relative rounded-2xl overflow-hidden p-2.5 sm:p-3 bg-white/75 backdrop-blur-md backdrop-saturate-150 border border-slate-200/80 shadow-[0_16px_40px_-12px_rgba(15,23,42,0.08),inset_0_1px_1px_rgba(255,255,255,0.95)]">
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-slate-50/90 via-white to-slate-100/70 flex items-center justify-center p-6 sm:p-10 border border-slate-100">
+                {/* Subtle Print Craft Accents & Registration Marks */}
+                <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex items-center gap-1.5 text-[10px] font-mono tracking-widest text-slate-400 select-none z-20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DB8D3]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D41A78]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F3C215]" />
+                  <span className="ml-1 uppercase text-slate-500 font-semibold text-[10px]">Étalonnage CMJN</span>
+                </div>
 
-                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-xl bg-white/90 backdrop-blur-md backdrop-saturate-150 border border-slate-200/90 text-xs shadow-md flex items-center justify-between">
-                  <span className="font-bold text-slate-900">Ateliers de Production à Tunis & Ariana</span>
-                  <span className="text-[#D41A78] font-semibold text-[11px]">Fabrication 100% Intégrée</span>
+                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 text-[10px] font-mono text-slate-300 select-none z-20">
+                  ✚ 2080 TUNIS
+                </div>
+
+                {/* Soft CMYK ambient blur glows behind logo */}
+                <div className="absolute w-44 h-44 rounded-full bg-[#2DB8D3]/10 blur-3xl -top-8 -left-8 pointer-events-none" />
+                <div className="absolute w-44 h-44 rounded-full bg-[#D41A78]/10 blur-3xl -bottom-8 -right-8 pointer-events-none" />
+                <div className="absolute w-36 h-36 rounded-full bg-[#F3C215]/15 blur-2xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+
+                {/* Official High-Resolution Logo Presentation */}
+                <div className="relative z-10 w-full max-w-[280px] sm:max-w-[360px] flex items-center justify-center transition-transform duration-700 ease-out hover:scale-105">
+                  <Image
+                    src="/images/opa-logo-light.png"
+                    alt="Logo Officiel OPA Imprimerie — Our Print Agency"
+                    width={628}
+                    height={339}
+                    priority
+                    className="w-full h-auto object-contain filter drop-shadow-[0_8px_16px_rgba(15,23,42,0.06)]"
+                  />
+                </div>
+
+                {/* Bottom Glassmorphic Atelier Badge */}
+                <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 p-3 sm:p-3.5 rounded-xl bg-white/90 backdrop-blur-md backdrop-saturate-150 border border-slate-200/90 text-xs shadow-md flex items-center justify-between z-20">
+                  <span className="font-bold text-slate-900 text-[11px] sm:text-xs">Ateliers de Production à Tunis &amp; Ariana</span>
+                  <span className="text-[#D41A78] font-semibold text-[10px] sm:text-[11px]">Fabrication 100% Intégrée</span>
                 </div>
               </div>
             </Card>

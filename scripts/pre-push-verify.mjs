@@ -83,7 +83,7 @@ async function runBrowserSmokeTest(browserType, deviceOptions, label) {
     }
   });
 
-  await page.goto(BASE_URL, { waitUntil: "networkidle", timeout: 30000 });
+  await page.goto(BASE_URL, { waitUntil: "load", timeout: 15000 });
 
   // Wait for preloader to dismiss
   await page.waitForTimeout(2200);
